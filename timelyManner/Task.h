@@ -1,0 +1,36 @@
+//
+//  Task.h
+//  timelyManner
+//
+//  Created by Dan Vingo on 6/30/13.
+//  Copyright (c) 2013 Rhombus Inc. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+enum {
+    kStopWatchTask,
+    kTimerTask,
+    kTripTask
+};
+
+@class Instance;
+
+@interface Task : NSManagedObject
+
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber *taskType;
+@property (nonatomic, retain) NSDate * lastRun;
+@property (nonatomic, retain) NSNumber * avgTime;
+@property (nonatomic, retain) NSSet *instances;
+@end
+
+@interface Task (CoreDataGeneratedAccessors)
+
+- (void)addInstancesObject:(Instance *)value;
+- (void)removeInstancesObject:(Instance *)value;
+- (void)addInstances:(NSSet *)values;
+- (void)removeInstances:(NSSet *)values;
+
+@end

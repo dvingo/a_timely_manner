@@ -6,18 +6,23 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
+#import "RIAppDelegate.h"
 #import "RITasksViewController.h"
 #import "RITaskCell.h"
+#import "Task.h"
+#import "RITaskManager.h"
 
 #define kTaskCellIdentifier @"TaskCell"
 #define kBackgroundColor [UIColor colorWithRed:236.0/255.0f green:236.0/255.0f blue:236.0/255.0f alpha:1.0f]
 #define kRowHeight 80.0f
 
 @interface RITasksViewController ()
-
+@property (strong, nonatomic) NSArray *tasks;
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @end
 
 @implementation RITasksViewController
+@synthesize tasks, formatter;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -26,6 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.frame = self.view.frame;
+    self.tasks = [[RITaskManager sharedInstance] loadTasks];
+    
+    self.formatter = [NSDateFormatter new];
+    self.formatter.dateFormat = @"MMM d";
+    
     [self setupTableView];
 }
 
@@ -47,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return self.tasks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,7 +66,16 @@
     cell.taskNameLabel.text = @"Commute";
     cell.dayLabel.text = @"today";
     
-    return cell;
+    if (self.tasks && self.tasks.count > 0) {
+        Task *task = (Task *)[self.tasks objectAtIndex:indexPath.row];
+        cell.taskNameLabel.text = task.name;
+        cell.dayLabel.text = [formatter stringFromDate:task.lastRun];
+        return cell;
+    }
+    
+    // TODO Set no data view
+    
+    return nil;
 }
 
 #pragma mark - Table view delegate
@@ -68,4 +88,7 @@
     return kRowHeight;
 }
 
+- (void)addNewTask:(id)sender {
+    [[RITaskManager sharedInstance] saveTaskWithName:@"New Task" taskType:kStopWatchTask];
+}
 @end
