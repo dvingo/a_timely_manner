@@ -10,10 +10,6 @@
 #import "RITaskManager.h"
 #import "Task.h"
 
-@interface RICreateStopWatchTaskViewController ()
-
-@end
-
 @implementation RICreateStopWatchTaskViewController
 @synthesize nameLabel;
 
@@ -34,28 +30,7 @@
 - (IBAction)createButtonPressed:(id)sender {
     if (self.nameLabel.text.length > 0) {
         [[RITaskManager sharedInstance] saveTaskWithName:self.nameLabel.text taskType:kStopWatchTask];
-//        self.tabBarController.selectedIndex = 1;
-        
-        UIView *fromView = self.tabBarController.selectedViewController.view;
-        UIView *toView = [[self.tabBarController.viewControllers objectAtIndex:1] view];
-
-        NSLog(@"to view is %@", toView);
-        
-        [UIView transitionFromView:fromView
-                            toView:toView
-                          duration:0.5
-                           options:UIViewAnimationOptionCurveEaseIn
-                        completion:^(BOOL finished) {
-                            if (finished) {
-                                [self.navigationController popToRootViewControllerAnimated:NO];
-                                self.tabBarController.selectedIndex = 1;
-
-                            }
-                        }];
-        
-//        UINavigationController *tasksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tasksViewNavController"];
-//        [self.tabBarController presentViewController:tasksViewController animated:YES completion:nil];
-//        [self.navigationController presentViewController:tasksViewController animated:YES completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } else {
         // TODO display error label
     }

@@ -10,6 +10,7 @@
 #import "RITaskManager.h"
 
 #define kTaskName @"Task"
+#define kInstanceName @"Instance"
 
 @interface RITaskManager ()
 @property (strong, nonatomic) NSArray *tasks;
@@ -71,6 +72,31 @@
     [context save:&error];
     NSLog(@"task created is: %@", newTask);
     return newTask;
+}
+
+//- (Instance *)saveInstanceWithDict:(NSDictionary *)paramData {
+- (Instance *)saveInstanceWithTask:(Task *)paramTask {
+    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    Instance *newInstance = (Instance *)[NSEntityDescription insertNewObjectForEntityForName:kInstanceName
+                                                                      inManagedObjectContext:context];
+//    Task *parentTask = (Task *)paramData[@"task"];
+    
+    newInstance.createdAt = [NSDate date];
+//    newInstance.type = parentTask.taskType;
+    newInstance.type = paramTask.taskType;
+//    newInstance.task = parentTask;
+    newInstance.task = paramTask;
+    
+    NSMutableSet *newInstances = [NSMutableSet setWithSet:paramTask.instances];
+    [newInstances addObject:newInstance];
+    paramTask.instances = [newInstances copy];
+
+    NSError *error;
+    [context save:&error];
+    NSLog(@"instance created is: %@", newInstance);
+    
+    return newInstance;
 }
 
 @end

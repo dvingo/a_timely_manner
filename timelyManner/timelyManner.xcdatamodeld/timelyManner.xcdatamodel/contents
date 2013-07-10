@@ -22,6 +22,6 @@
     </entity>
     <elements>
         <element name="Instance" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="Task" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Task" positionX="-180" positionY="213" width="128" height="120"/>
     </elements>
 </model>

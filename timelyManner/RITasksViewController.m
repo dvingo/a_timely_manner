@@ -8,6 +8,8 @@
 
 #import "RIAppDelegate.h"
 #import "RITasksViewController.h"
+#import "RICreateTaskViewController.h"
+#import "RIStopWatchDetailViewController.h"
 #import "RITaskCell.h"
 #import "Task.h"
 #import "RITaskManager.h"
@@ -37,7 +39,15 @@
     self.formatter = [NSDateFormatter new];
     self.formatter.dateFormat = @"MMM d";
     
+    self.navigationItem.title = @"Tasks";
+    
     [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // Use notifications to only update when needed, not every appearance
+    self.tasks = [[RITaskManager sharedInstance] loadTasks];
+    [self.tableView reloadData];
 }
 
 - (void)setupTableView {
@@ -81,14 +91,18 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    RIStopWatchDetailViewController *stopWatchDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stopWatchDetailScene"];
+    stopWatchDetailViewController.task = (Task *)self.tasks[indexPath.row];
+    [self.navigationController pushViewController:stopWatchDetailViewController animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return kRowHeight;
 }
 
-- (void)addNewTask:(id)sender {
-    [[RITaskManager sharedInstance] saveTaskWithName:@"New Task" taskType:kStopWatchTask];
+- (IBAction)newTaskButtonPressed:(id)sender {
+    RICreateTaskViewController *createTaskViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"createTaskScene"];
+    [self.navigationController pushViewController:createTaskViewController animated:YES ];
 }
+
 @end

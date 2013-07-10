@@ -10,6 +10,6 @@
 
 @interface RITasksViewController : UITableViewController
 
-- (void)addNewTask:(id)sender;
+- (IBAction)newTaskButtonPressed:(id)sender;
 
 @end

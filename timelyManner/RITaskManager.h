@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Task.h"
+#import "Instance.h"
 
 @interface RITaskManager : NSObject
 
@@ -15,5 +16,6 @@
 + (RITaskManager *)sharedInstance;
 - (NSArray *)loadTasks;
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType;
+- (Instance *)saveInstanceWithTask:(Task *)paramTask;
 
 @end
