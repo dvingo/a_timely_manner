@@ -18,10 +18,11 @@
         <attribute name="lastRun" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="activeInstances" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" syncable="YES"/>
         <relationship name="instances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Instance" inverseName="task" inverseEntity="Instance" syncable="YES"/>
     </entity>
     <elements>
         <element name="Instance" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="Task" positionX="-180" positionY="213" width="128" height="120"/>
+        <element name="Task" positionX="-180" positionY="213" width="128" height="135"/>
     </elements>
 </model>

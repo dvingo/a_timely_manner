@@ -12,11 +12,11 @@
 
 @interface RITaskManager : NSObject
 
-
 + (RITaskManager *)sharedInstance;
 - (NSArray *)loadTasks;
 - (NSArray *)loadActiveTasks;
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType;
 - (Instance *)saveInstanceWithTask:(Task *)paramTask;
+- (Instance *)createInstanceWithTask:(Task *)paramTask;
 
 @end

@@ -78,6 +78,7 @@
     newTask.lastRun = nil;
     newTask.avgTime = nil;
     newTask.instances = nil;
+    newTask.activeInstances = nil;
     if (paramTaskType < 0 || paramTaskType > 2) {
         paramTaskType = 1;
     }
@@ -89,7 +90,6 @@
     return newTask;
 }
 
-//- (Instance *)saveInstanceWithDict:(NSDictionary *)paramData {
 - (Instance *)saveInstanceWithTask:(Task *)paramTask {
     RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -107,6 +107,30 @@
     [newInstances addObject:newInstance];
     paramTask.instances = [newInstances copy];
 
+    NSError *error;
+    [context save:&error];
+    NSLog(@"instance created is: %@", newInstance);
+    
+    return newInstance;
+}
+
+- (Instance *)createInstanceWithTask:(Task *)paramTask {
+    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    Instance *newInstance = (Instance *)[NSEntityDescription insertNewObjectForEntityForName:kInstanceName
+                                                                      inManagedObjectContext:context];
+    //    Task *parentTask = (Task *)paramData[@"task"];
+    
+    newInstance.createdAt = [NSDate date];
+    newInstance.type = paramTask.taskType;
+    newInstance.task = paramTask;
+
+    NSLog(@"ABOUT TO SET NEW ACTIVE INSTA");
+    NSLog(@"paramTask active instances: %@", paramTask.activeInstances);
+    [paramTask addActiveInstancesObject:newInstance];
+    NSLog(@"AFTER THAT");
+
+    
     NSError *error;
     [context save:&error];
     NSLog(@"instance created is: %@", newInstance);

@@ -24,6 +24,7 @@ enum {
 @property (nonatomic, retain) NSDate * lastRun;
 @property (nonatomic, retain) NSNumber * avgTime;
 @property (nonatomic, retain) NSSet *instances;
+@property (nonatomic, retain) NSSet *activeInstances;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)
@@ -32,5 +33,10 @@ enum {
 - (void)removeInstancesObject:(Instance *)value;
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
+
+- (void)addActiveInstancesObject:(Instance *)value;
+- (void)removeActiveInstancesObject:(Instance *)value;
+- (void)addActiveInstances:(NSSet *)values;
+- (void)removeActiveInstances:(NSSet *)values;
 
 @end

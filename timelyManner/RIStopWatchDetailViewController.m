@@ -39,7 +39,9 @@
 
 - (void)createNewInstance {
     NSLog(@"creating new instance");
-    [[RITaskManager sharedInstance] saveInstanceWithTask:self.task];
+    [[RITaskManager sharedInstance] createInstanceWithTask:self.task];
+    // Display "About to start screen"
+    
 }
 
 - (void)didReceiveMemoryWarning {

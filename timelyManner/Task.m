@@ -17,5 +17,6 @@
 @dynamic lastRun;
 @dynamic avgTime;
 @dynamic instances;
+@dynamic activeInstances;
 
 @end
