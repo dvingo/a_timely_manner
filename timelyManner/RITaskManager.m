@@ -49,9 +49,24 @@
     return self.tasks;
 }
 
-//- (NSArray *)loadActiveTasks {
-//    
-//}
+- (NSArray *)loadActiveTasks {
+    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSEntityDescription *taskEntity = [NSEntityDescription entityForName:kTaskName
+                                                  inManagedObjectContext:context];
+    NSFetchRequest *taskRequest = [[NSFetchRequest alloc] init];
+    [taskRequest setEntity:taskEntity];
+    NSError *error;
+    NSArray *tempTasks = [context executeFetchRequest:taskRequest error:&error];
+    
+    if (error) {
+        NSLog(@"Error loading tasks: %@", error);
+    }
+    
+    NSPredicate *activePredicate = [NSPredicate predicateWithFormat:@"SELF.end == nil"];
+    self.activeTasks = [tempTasks filteredArrayUsingPredicate:activePredicate];
+    return self.activeTasks;
+}
 
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType {
     RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];

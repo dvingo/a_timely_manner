@@ -30,6 +30,8 @@
 		7B351839177F326200E0FF72 /* RITaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B351838177F326200E0FF72 /* RITaskCell.m */; };
 		7B8641001780CF9E0009350C /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8640FF1780CF9E0009350C /* Instance.m */; };
 		7B8641071780D2990009350C /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8641061780D2990009350C /* Task.m */; };
+		7B96717D17924572005D00E0 /* RIActiveTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96717C17924572005D00E0 /* RIActiveTaskCell.m */; };
+		7B96717F179246CB005D00E0 /* ActiveTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B96717E179246CA005D00E0 /* ActiveTaskCell.xib */; };
 		7BA37E39178CE10D00CAED39 /* RIStopWatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E38178CE10D00CAED39 /* RIStopWatchDetailViewController.m */; };
 		7BA37E3C178CE11A00CAED39 /* RITimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E3B178CE11A00CAED39 /* RITimerDetailViewController.m */; };
 		7BA37E3F178CE12B00CAED39 /* RITripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E3E178CE12B00CAED39 /* RITripDetailViewController.m */; };
@@ -83,6 +85,9 @@
 		7B8640FF1780CF9E0009350C /* Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instance.m; sourceTree = "<group>"; };
 		7B8641051780D2990009350C /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		7B8641061780D2990009350C /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		7B96717B17924572005D00E0 /* RIActiveTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIActiveTaskCell.h; sourceTree = "<group>"; };
+		7B96717C17924572005D00E0 /* RIActiveTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIActiveTaskCell.m; sourceTree = "<group>"; };
+		7B96717E179246CA005D00E0 /* ActiveTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveTaskCell.xib; sourceTree = "<group>"; };
 		7BA37E37178CE10C00CAED39 /* RIStopWatchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIStopWatchDetailViewController.h; sourceTree = "<group>"; };
 		7BA37E38178CE10D00CAED39 /* RIStopWatchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIStopWatchDetailViewController.m; sourceTree = "<group>"; };
 		7BA37E3A178CE11A00CAED39 /* RITimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITimerDetailViewController.h; sourceTree = "<group>"; };
@@ -210,12 +215,11 @@
 		7B351830177F305700E0FF72 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7B96718017924AE1005D00E0 /* ActiveTasks */,
 				7BA37E36178CE0EA00CAED39 /* TaskDetailViews */,
 				7BBB6660178B97CD00F22C03 /* NewTasks */,
 				7B351831177F307300E0FF72 /* RITasksViewController.h */,
 				7B351832177F307300E0FF72 /* RITasksViewController.m */,
-				7BBB665D178B954B00F22C03 /* RIActiveTasksViewController.h */,
-				7BBB665E178B954B00F22C03 /* RIActiveTasksViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -223,6 +227,7 @@
 		7B351834177F323200E0FF72 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7B96717A17924554005D00E0 /* ActiveTasks */,
 				7B351835177F324400E0FF72 /* TaskCell.xib */,
 				7B351837177F326200E0FF72 /* RITaskCell.h */,
 				7B351838177F326200E0FF72 /* RITaskCell.m */,
@@ -242,6 +247,25 @@
 				7BBB665B178B8E8400F22C03 /* RITaskManager.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		7B96717A17924554005D00E0 /* ActiveTasks */ = {
+			isa = PBXGroup;
+			children = (
+				7B96717E179246CA005D00E0 /* ActiveTaskCell.xib */,
+				7B96717B17924572005D00E0 /* RIActiveTaskCell.h */,
+				7B96717C17924572005D00E0 /* RIActiveTaskCell.m */,
+			);
+			name = ActiveTasks;
+			sourceTree = "<group>";
+		};
+		7B96718017924AE1005D00E0 /* ActiveTasks */ = {
+			isa = PBXGroup;
+			children = (
+				7BBB665D178B954B00F22C03 /* RIActiveTasksViewController.h */,
+				7BBB665E178B954B00F22C03 /* RIActiveTasksViewController.m */,
+			);
+			name = ActiveTasks;
 			sourceTree = "<group>";
 		};
 		7BA37E36178CE0EA00CAED39 /* TaskDetailViews */ = {
@@ -350,6 +374,7 @@
 				7B22BC21177F2EE200AB36E4 /* Default-568h@2x.png in Resources */,
 				7B35182F177F2FC700E0FF72 /* Storyboard.storyboard in Resources */,
 				7B351836177F324400E0FF72 /* TaskCell.xib in Resources */,
+				7B96717F179246CB005D00E0 /* ActiveTaskCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +425,7 @@
 				7BA37E39178CE10D00CAED39 /* RIStopWatchDetailViewController.m in Sources */,
 				7BA37E3C178CE11A00CAED39 /* RITimerDetailViewController.m in Sources */,
 				7BA37E3F178CE12B00CAED39 /* RITripDetailViewController.m in Sources */,
+				7B96717D17924572005D00E0 /* RIActiveTaskCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

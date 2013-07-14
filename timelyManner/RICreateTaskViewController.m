@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"New Task";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -45,14 +45,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    // Use notifications to only update when needed, not every appearance
+    // TODO Use notifications to only update when needed, not every appearance
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
     [self.tableView reloadData];
 }
 
 - (void)setupTableView {
     // Register Task Cell
-    UINib *taskCellNib = [UINib nibWithNibName:@"TaskCell" bundle:nil];
+    UINib *taskCellNib = [UINib nibWithNibName:kTaskCellIdentifier bundle:nil];
     [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kTaskCellIdentifier];
     self.tableView.backgroundColor = kBackgroundColor;
 }

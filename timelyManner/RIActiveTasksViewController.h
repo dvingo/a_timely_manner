@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RIActiveTasksViewController : UIViewController
+@interface RIActiveTasksViewController : UITableViewController
 
 @end

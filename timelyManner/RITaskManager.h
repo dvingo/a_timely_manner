@@ -15,6 +15,7 @@
 
 + (RITaskManager *)sharedInstance;
 - (NSArray *)loadTasks;
+- (NSArray *)loadActiveTasks;
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType;
 - (Instance *)saveInstanceWithTask:(Task *)paramTask;
 
