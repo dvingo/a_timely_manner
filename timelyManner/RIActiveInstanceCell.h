@@ -1,5 +1,5 @@
 //
-//  RIActiveTaskCell.h
+//  RIActiveInstanceCell.h
 //  timelyManner
 //
 //  Created by Dan Vingo on 7/13/13.
@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Instance.h"
 
-@interface RIActiveTaskCell : UITableViewCell
+@interface RIActiveInstanceCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *timerLengthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
+@property (strong, nonatomic) Instance *instance;
 
 - (IBAction)stopTimerPressed:(id)sender;
+- (void)populateViews;
 
 @end

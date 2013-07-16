@@ -15,7 +15,6 @@
 @interface RITaskManager ()
 @property (strong, nonatomic) NSArray *tasks;
 @property (strong, nonatomic) NSArray *activeTasks;
-
 @end
 
 @implementation RITaskManager
@@ -30,6 +29,19 @@
     });
 
     return __sharedInstance;
+}
+
+- (void)saveContext {
+    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    NSError *error;
+    [context save:&error];
+}
+
+- (void)refreshTask:(Task *)task {
+    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    [context refreshObject:task mergeChanges:YES];
 }
 
 - (NSArray *)loadTasks {
@@ -47,6 +59,17 @@
     }
     
     return self.tasks;
+}
+
+- (NSArray *)loadActiveInstances {
+    NSArray *allTasks = [self loadTasks];
+    NSMutableArray *activeInstances = [NSMutableArray new];
+    for (Task *task in allTasks) {
+        if (task.activeInstances.count > 0) {
+            [activeInstances addObjectsFromArray:task.activeInstances];
+        }
+    }
+    return [activeInstances copy];
 }
 
 - (NSArray *)loadActiveTasks {
@@ -78,7 +101,7 @@
     newTask.lastRun = nil;
     newTask.avgTime = nil;
     newTask.instances = nil;
-    newTask.activeInstances = nil;
+    
     if (paramTaskType < 0 || paramTaskType > 2) {
         paramTaskType = 1;
     }
@@ -122,20 +145,39 @@
     //    Task *parentTask = (Task *)paramData[@"task"];
     
     newInstance.createdAt = [NSDate date];
+    // TODO MOVE START TO NEXT SCENE (CONFIRMATION SCREEN
+    newInstance.start = [NSDate date];
     newInstance.type = paramTask.taskType;
     newInstance.task = paramTask;
 
     NSLog(@"ABOUT TO SET NEW ACTIVE INSTA");
     NSLog(@"paramTask active instances: %@", paramTask.activeInstances);
-    [paramTask addActiveInstancesObject:newInstance];
+    [paramTask addInstancesObject:newInstance];
+    [context refreshObject:paramTask mergeChanges:YES];
     NSLog(@"AFTER THAT");
 
-    
     NSError *error;
     [context save:&error];
     NSLog(@"instance created is: %@", newInstance);
     
     return newInstance;
+}
+
+- (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                                          fromDate:startDate
+                                            toDate:endDate
+                                           options:0];
+    int hours = [comps hour];
+    int minutes = [comps minute];
+    int seconds = [comps second];
+
+    return [NSString stringWithFormat:@"%d:%d:%d", hours, minutes, seconds];
+}
+
+- (NSString *)timeElapsedSinceDate:(NSDate *)startDate {
+    return [self timeBetweenStartDate:startDate endDate:[NSDate date]];
 }
 
 @end

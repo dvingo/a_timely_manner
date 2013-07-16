@@ -91,9 +91,31 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RIStopWatchDetailViewController *stopWatchDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stopWatchDetailScene"];
-    stopWatchDetailViewController.task = (Task *)self.tasks[indexPath.row];
-    [self.navigationController pushViewController:stopWatchDetailViewController animated:YES];
+    Task *selectedTask = (Task *)self.tasks[indexPath.row];
+    switch ([selectedTask.taskType intValue]) {
+
+        case kStopWatchTask: {
+            NSLog(@"stop watch task selected");
+            RIStopWatchDetailViewController *stopWatchDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stopWatchDetailScene"];
+            stopWatchDetailViewController.task = selectedTask;
+            [self.navigationController pushViewController:stopWatchDetailViewController animated:YES];
+            break;
+        }
+
+        case kTimerTask: {
+            NSLog(@"timer task selected");
+            break;
+        }
+
+        case kTripTask: {
+            NSLog(@"trip task selected");
+            break;
+        }
+
+        default:
+            NSLog(@"default in switch");
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

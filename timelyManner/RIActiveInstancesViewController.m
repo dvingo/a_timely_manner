@@ -1,23 +1,23 @@
 //
-//  RIActiveTasksViewController.m
+//  RIActiveInstancesViewController.m
 //  timelyManner
 //
 //  Created by Dan Vingo on 7/8/13.
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
-#import "RIActiveTasksViewController.h"
-#import "RIActiveTaskCell.h"
+#import "RIActiveInstancesViewController.h"
+#import "RIActiveInstanceCell.h"
 #import "RITaskManager.h"
 
-#define kActiveTaskCellIdentifier @"ActiveTaskCell"
+#define kActiveInstanceCellIdentifier @"ActiveInstanceCell"
 
-@interface RIActiveTasksViewController ()
-@property (strong, nonatomic) NSArray *activeTasks;
+@interface RIActiveInstancesViewController ()
+@property (strong, nonatomic) NSArray *activeInstances;
 @end
 
-@implementation RIActiveTasksViewController
-@synthesize activeTasks;
+@implementation RIActiveInstancesViewController
+@synthesize activeInstances;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,15 +30,15 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.activeTasks = [[RITaskManager sharedInstance] loadTasks];
-    NSLog(@"Active tasks are: %@", self.activeTasks);
+    self.activeInstances = [[RITaskManager sharedInstance] loadActiveInstances];
+    NSLog(@"Active instances are: %@", self.activeInstances);
     [self.tableView reloadData];
 }
 
 - (void)setupTableView {
     // Register Task Cell
-    UINib *taskCellNib = [UINib nibWithNibName:kActiveTaskCellIdentifier bundle:nil];
-    [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kActiveTaskCellIdentifier];
+    UINib *taskCellNib = [UINib nibWithNibName:kActiveInstanceCellIdentifier bundle:nil];
+    [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kActiveInstanceCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +52,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.activeTasks.count;
+    return self.activeInstances.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,14 +60,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RIActiveTaskCell *cell = (RIActiveTaskCell *)[tableView dequeueReusableCellWithIdentifier:kActiveTaskCellIdentifier forIndexPath:indexPath];
+    RIActiveInstanceCell *cell = (RIActiveInstanceCell *)[tableView dequeueReusableCellWithIdentifier:kActiveInstanceCellIdentifier forIndexPath:indexPath];
     cell.taskLabel.text = @"Commute";
     cell.timerLengthLabel.text = @"45.24";
     
-    if (self.activeTasks && self.activeTasks.count > 0) {
-        Task *task = (Task *)[self.activeTasks objectAtIndex:indexPath.row];
-        cell.taskLabel.text = task.name;
-        cell.timerLengthLabel.text = @"abc";//[formatter stringFromDate:task.lastRun];
+    if (self.activeInstances && self.activeInstances.count > 0) {
+        Instance *instance = (Instance *)[self.activeInstances objectAtIndex:indexPath.row];
+        cell.instance = instance;
+        [cell populateViews];
         return cell;
     }
     

@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.nameLabel becomeFirstResponder];
+    
+    self.navigationItem.title = @"New Stopwatch";
 }
 
 - (void)didReceiveMemoryWarning {

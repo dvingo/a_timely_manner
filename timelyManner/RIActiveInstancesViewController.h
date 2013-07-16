@@ -1,5 +1,5 @@
 //
-//  RIActiveTasksViewController.h
+//  RIActiveInstancesViewController.h
 //  timelyManner
 //
 //  Created by Dan Vingo on 7/8/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RIActiveTasksViewController : UITableViewController
+@interface RIActiveInstancesViewController : UITableViewController
 
 @end

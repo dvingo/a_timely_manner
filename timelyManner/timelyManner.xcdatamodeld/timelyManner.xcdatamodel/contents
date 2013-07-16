@@ -18,11 +18,13 @@
         <attribute name="lastRun" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="activeInstances" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" syncable="YES"/>
         <relationship name="instances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Instance" inverseName="task" inverseEntity="Instance" syncable="YES"/>
+        <fetchedProperty name="activeInstances" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Instance" predicateString="end == nil"/>
+        </fetchedProperty>
     </entity>
     <elements>
         <element name="Instance" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="Task" positionX="-180" positionY="213" width="128" height="135"/>
+        <element name="Task" positionX="-180" positionY="213" width="128" height="149"/>
     </elements>
 </model>

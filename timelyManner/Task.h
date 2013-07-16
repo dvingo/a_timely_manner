@@ -2,7 +2,7 @@
 //  Task.h
 //  timelyManner
 //
-//  Created by Dan Vingo on 6/30/13.
+//  Created by Dan Vingo on 7/15/13.
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
@@ -19,12 +19,12 @@ enum {
 
 @interface Task : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber *taskType;
-@property (nonatomic, retain) NSDate * lastRun;
 @property (nonatomic, retain) NSNumber * avgTime;
+@property (nonatomic, retain) NSDate * lastRun;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * taskType;
 @property (nonatomic, retain) NSSet *instances;
-@property (nonatomic, retain) NSSet *activeInstances;
+@property (nonatomic, retain) NSArray *activeInstances;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)
@@ -33,10 +33,5 @@ enum {
 - (void)removeInstancesObject:(Instance *)value;
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
-
-- (void)addActiveInstancesObject:(Instance *)value;
-- (void)removeActiveInstancesObject:(Instance *)value;
-- (void)addActiveInstances:(NSSet *)values;
-- (void)removeActiveInstances:(NSSet *)values;
 
 @end

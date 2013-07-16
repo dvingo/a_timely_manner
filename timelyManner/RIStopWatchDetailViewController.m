@@ -28,6 +28,7 @@
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                target:self
                                                                action:@selector(createNewInstance)];
+    self.navigationItem.title = self.task.name;
     self.navigationItem.rightBarButtonItem = addInstanceButton;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
@@ -42,10 +43,6 @@
     [[RITaskManager sharedInstance] createInstanceWithTask:self.task];
     // Display "About to start screen"
     
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Table view data source
@@ -64,12 +61,22 @@
 
     if (self.instances) {
         Instance *instance = self.instances[indexPath.row];
-        NSDateFormatter *f = [NSDateFormatter new];
-        f.dateFormat = @"yyyy-MM-dd";
-        cell.textLabel.text = [f stringFromDate:instance.createdAt];
+        
+        if (instance.end) {
+            NSLog(@"instance has end date: %@", instance.end);
+            cell.textLabel.text = [[RITaskManager sharedInstance] timeBetweenStartDate:instance.start endDate:instance.end];
+        } else {
+            NSLog(@"instance does not have end date: %@", instance.end);
+            NSLog(@"instance start date: %@", instance.start);
+            cell.textLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:instance.start];
+        }
     }
 
     return cell;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 @end

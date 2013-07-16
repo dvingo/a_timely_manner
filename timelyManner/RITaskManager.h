@@ -13,10 +13,14 @@
 @interface RITaskManager : NSObject
 
 + (RITaskManager *)sharedInstance;
+- (void)saveContext;
+- (void)refreshTask:(Task *)task;
 - (NSArray *)loadTasks;
-- (NSArray *)loadActiveTasks;
+- (NSArray *)loadActiveInstances;
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType;
 - (Instance *)saveInstanceWithTask:(Task *)paramTask;
 - (Instance *)createInstanceWithTask:(Task *)paramTask;
+- (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
+- (NSString *)timeElapsedSinceDate:(NSDate *)startDate;
 
 @end
