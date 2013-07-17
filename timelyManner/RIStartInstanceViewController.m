@@ -7,6 +7,7 @@
 //
 
 #import "RIStartInstanceViewController.h"
+#import "RIActiveInstancesViewController.h"
 #import "RITaskManager.h"
 
 @implementation RIStartInstanceViewController
@@ -29,6 +30,7 @@
 - (IBAction)goButtonPressed:(id)sender {
     NSLog(@"creating new instance");
     [[RITaskManager sharedInstance] createInstanceWithTask:self.task];
+    [self.tabBarController setSelectedIndex:1];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 

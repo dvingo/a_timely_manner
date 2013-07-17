@@ -231,8 +231,7 @@
 				7BA37E36178CE0EA00CAED39 /* TaskDetailViews */,
 				7BBB6660178B97CD00F22C03 /* NewTasks */,
 				7BA85A2B1796195600091845 /* StartInstance */,
-				7B351831177F307300E0FF72 /* RITasksViewController.h */,
-				7B351832177F307300E0FF72 /* RITasksViewController.m */,
+				7BA85A371796426500091845 /* TaskList */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +328,15 @@
 				7BA85A3517961C8B00091845 /* RITimeHelper.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		7BA85A371796426500091845 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				7B351831177F307300E0FF72 /* RITasksViewController.h */,
+				7B351832177F307300E0FF72 /* RITasksViewController.m */,
+			);
+			name = TaskList;
 			sourceTree = "<group>";
 		};
 		7BBB6660178B97CD00F22C03 /* NewTasks */ = {

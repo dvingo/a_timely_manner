@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kActiveInstancesScene @"activeInstancesScene"
+
 @interface RIActiveInstancesViewController : UITableViewController
 
 @end

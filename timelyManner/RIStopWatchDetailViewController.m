@@ -71,26 +71,18 @@
         Instance *instance = self.instances[indexPath.row];
         
         if (instance.end) {
-            NSLog(@"instance has end date: %@", instance.end);
-//            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
-//                                                                                     endDate:instance.end
-//                                                                                  withFormat:kHoursMinutes];
-            NSString *timeBetween = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+//            NSLog(@"instance has end date: %@", instance.end);
+            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                      endDate:instance.end
                                                                                   withFormat:kHoursMinutes];
-            
-            cell.elapsedTimeLabel.text = timeBetween;
-            
-            NSLog(@"time between is :%@\n\n", timeBetween);
-            
-            
+
             cell.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
             cell.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                    endDate:instance.end
                                                                                 withFormat:kstartEndHours];
         } else {
-            NSLog(@"instance does not have end date: %@", instance.end);
-            NSLog(@"instance start date: %@", instance.start);
+//            NSLog(@"instance does not have end date: %@", instance.end);
+//            NSLog(@"instance start date: %@", instance.start);
             NSDate *now = [NSDate date];
             cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                      endDate:now
