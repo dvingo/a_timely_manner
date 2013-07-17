@@ -6,9 +6,12 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
-#import "RIStopWatchDetailViewController.h"
-#import "RITaskManager.h"
 #import "Instance.h"
+#import "RIStartInstanceViewController.h"
+#import "RIStopWatchDetailViewController.h"
+#import "RIInstanceCell.h"
+#import "RITaskManager.h"
+#import "RITimeHelper.h"
 
 @interface RIStopWatchDetailViewController ()
 @property (strong, nonatomic) NSArray *instances;
@@ -31,7 +34,13 @@
     self.navigationItem.title = self.task.name;
     self.navigationItem.rightBarButtonItem = addInstanceButton;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self setupTableView];
+}
+
+- (void)setupTableView {
+    // Register Instance Cell
+    UINib *instanceCellNib = [UINib nibWithNibName:kInstanceCellIdentifier bundle:nil];
+    [self.tableView registerNib:instanceCellNib forCellReuseIdentifier:kInstanceCellIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,10 +48,10 @@
 }
 
 - (void)createNewInstance {
-    NSLog(@"creating new instance");
-    [[RITaskManager sharedInstance] createInstanceWithTask:self.task];
-    // Display "About to start screen"
-    
+    RIStartInstanceViewController *startInstanceViewController = [self.storyboard
+                                                                  instantiateViewControllerWithIdentifier:kStartInstanceScene];
+    startInstanceViewController.task = self.task;
+    [self.navigationController pushViewController:startInstanceViewController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -56,19 +65,42 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    RIInstanceCell *cell = [tableView dequeueReusableCellWithIdentifier:kInstanceCellIdentifier forIndexPath:indexPath];
 
     if (self.instances) {
         Instance *instance = self.instances[indexPath.row];
         
         if (instance.end) {
             NSLog(@"instance has end date: %@", instance.end);
-            cell.textLabel.text = [[RITaskManager sharedInstance] timeBetweenStartDate:instance.start endDate:instance.end];
+//            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+//                                                                                     endDate:instance.end
+//                                                                                  withFormat:kHoursMinutes];
+            NSString *timeBetween = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+                                                                                     endDate:instance.end
+                                                                                  withFormat:kHoursMinutes];
+            
+            cell.elapsedTimeLabel.text = timeBetween;
+            
+            NSLog(@"time between is :%@\n\n", timeBetween);
+            
+            
+            cell.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
+            cell.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+                                                                                   endDate:instance.end
+                                                                                withFormat:kstartEndHours];
         } else {
             NSLog(@"instance does not have end date: %@", instance.end);
             NSLog(@"instance start date: %@", instance.start);
-            cell.textLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:instance.start];
+            NSDate *now = [NSDate date];
+            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+                                                                                     endDate:now
+                                                                                  withFormat:kHoursMinutes];
+            
+            cell.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:now];
+            
+            cell.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
+                                                                                   endDate:now
+                                                                                withFormat:kstartEndHours];
         }
     }
 

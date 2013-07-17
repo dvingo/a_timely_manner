@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timerLengthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (strong, nonatomic) Instance *instance;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 - (IBAction)stopTimerPressed:(id)sender;
 - (void)populateViews;
