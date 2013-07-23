@@ -31,7 +31,7 @@
                          self.stopButton.alpha = 0.0f;
                      }
                      completion:^(BOOL finished) {
-                         [self.stopButton removeFromSuperview];
+                         self.stopButton.enabled = NO;
                      }];
     self.instance.end = [NSDate date];
     [[RITaskManager sharedInstance] saveContext];
@@ -39,7 +39,10 @@
 }
 
 - (void)populateViews {
+    NSLog(@"In populate views");
     self.taskLabel.text = self.instance.task.name;
+    self.stopButton.alpha = 1.0f;
+    self.stopButton.enabled = YES;
     self.timerLengthLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:self.instance.start];
 }
 

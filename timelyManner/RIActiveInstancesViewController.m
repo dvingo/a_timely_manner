@@ -31,7 +31,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.activeInstances = [[RITaskManager sharedInstance] loadActiveInstances];
-    NSLog(@"Active instances are: %@", self.activeInstances);
+    NSLog(@"There are %d active instances", self.activeInstances.count);
+    
     [self.tableView reloadData];
 }
 
@@ -59,6 +60,8 @@
     return 110.0;
 }
 
+#pragma mark - Table view delegate
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RIActiveInstanceCell *cell = (RIActiveInstanceCell *)[tableView dequeueReusableCellWithIdentifier:kActiveInstanceCellIdentifier forIndexPath:indexPath];
     cell.taskLabel.text = @"Commute";
@@ -68,7 +71,6 @@
         Instance *instance = (Instance *)[self.activeInstances objectAtIndex:indexPath.row];
         cell.instance = instance;
         [cell populateViews];
-        return cell;
     }
     
     // TODO Set no data view
