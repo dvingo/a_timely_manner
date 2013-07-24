@@ -20,11 +20,10 @@
 
 @interface RITasksViewController ()
 @property (strong, nonatomic) NSArray *tasks;
-@property (strong, nonatomic) NSDateFormatter *formatter;
 @end
 
 @implementation RITasksViewController
-@synthesize tasks, formatter;
+@synthesize tasks;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -35,9 +34,6 @@
     [super viewDidLoad];
     self.tableView.frame = self.view.frame;
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
-    
-    self.formatter = [NSDateFormatter new];
-    self.formatter.dateFormat = @"MMM d";
     
     self.navigationItem.title = @"Tasks";
     
@@ -71,24 +67,22 @@
     return self.tasks.count;
 }
 
+#pragma mark - Table view delegate
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RITaskCell *cell = [tableView dequeueReusableCellWithIdentifier:kTaskCellIdentifier forIndexPath:indexPath];
     cell.taskNameLabel.text = @"Commute";
     cell.dayLabel.text = @"today";
     
     if (self.tasks && self.tasks.count > 0) {
-        Task *task = (Task *)[self.tasks objectAtIndex:indexPath.row];
-        cell.taskNameLabel.text = task.name;
-        cell.dayLabel.text = [formatter stringFromDate:task.lastRun];
-        return cell;
+        NSLog(@"WE HAVE %d tasks", self.tasks.count);
+        [cell populateViewsWithTask:(Task *)[self.tasks objectAtIndex:indexPath.row]];
     }
     
     // TODO Set no data view
     
-    return nil;
+    return cell;
 }
-
-#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *selectedTask = (Task *)self.tasks[indexPath.row];

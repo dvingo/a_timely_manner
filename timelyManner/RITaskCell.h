@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
 @interface RITaskCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numActiveInstances;
 
+- (void)populateViewsWithTask:(Task *)task;
+    
 @end

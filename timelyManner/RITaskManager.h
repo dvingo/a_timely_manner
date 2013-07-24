@@ -17,6 +17,7 @@
 - (void)refreshTask:(Task *)task;
 - (NSArray *)loadTasks;
 - (NSArray *)loadActiveInstances;
+- (NSDate *)lastRunDateWithTask:(Task *)task;
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType;
 - (Instance *)saveInstanceWithTask:(Task *)paramTask;
 - (Instance *)createInstanceWithTask:(Task *)paramTask;

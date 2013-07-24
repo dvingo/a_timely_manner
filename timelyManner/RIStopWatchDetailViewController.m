@@ -64,36 +64,18 @@
     return self.task.instances.count;
 }
 
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RIInstanceCell *cell = [tableView dequeueReusableCellWithIdentifier:kInstanceCellIdentifier forIndexPath:indexPath];
 
     if (self.instances) {
-        Instance *instance = self.instances[indexPath.row];
-        
-        if (instance.end) {
-//            NSLog(@"instance has end date: %@", instance.end);
-            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
-                                                                                     endDate:instance.end
-                                                                                  withFormat:kHoursMinutes];
-
-            cell.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
-            cell.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
-                                                                                   endDate:instance.end
-                                                                                withFormat:kstartEndHours];
-        } else {
-//            NSLog(@"instance does not have end date: %@", instance.end);
-//            NSLog(@"instance start date: %@", instance.start);
-            NSDate *now = [NSDate date];
-            cell.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
-                                                                                     endDate:now
-                                                                                  withFormat:kHoursMinutes];
-            
-            cell.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:now];
-            
-            cell.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
-                                                                                   endDate:now
-                                                                                withFormat:kstartEndHours];
-        }
+        [cell populateCellWithInstance:(Instance *)self.instances[indexPath.row] rowNumber:indexPath.row];
     }
 
     return cell;

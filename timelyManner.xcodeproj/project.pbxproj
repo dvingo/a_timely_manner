@@ -312,9 +312,9 @@
 		7BA85A3217961BA500091845 /* Instance */ = {
 			isa = PBXGroup;
 			children = (
+				7BA85A30179619F300091845 /* InstanceCell.xib */,
 				7BA85A2D179619E100091845 /* RIInstanceCell.h */,
 				7BA85A2E179619E100091845 /* RIInstanceCell.m */,
-				7BA85A30179619F300091845 /* InstanceCell.xib */,
 			);
 			name = Instance;
 			sourceTree = "<group>";

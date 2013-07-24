@@ -34,4 +34,6 @@ enum {
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
 
+- (void)updateLastRun;
+
 @end

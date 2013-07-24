@@ -14,5 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *clockTimeLabel;
+@property (weak, nonatomic) IBOutlet UIView *cellContainerView;
+
+- (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber;
 
 @end
