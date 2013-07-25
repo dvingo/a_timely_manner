@@ -19,7 +19,9 @@
 @dynamic instances;
 @dynamic activeInstances;
 
-
+/**
+ * Updates the lastRun for this task to the most recent of its instances end date.
+ */
 - (void)updateLastRun {
     // Sort instances by end date
     NSArray *tempInstances = [self.instances allObjects];
@@ -44,11 +46,22 @@
     Instance *last = (Instance *)[sortedInstances lastObject];
     NSDate *firstEndDate = first.end;
     NSDate *lastEndDate = last.end;
-    
-    
+
     NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
     NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
     self.lastRun = (NSDate *)((Instance *)[sortedInstances objectAtIndex:0]).end;
+}
+
+- (NSInteger)averageInstanceTime {
+    double total = 0.0f;
+    int numInstances = 0;
+    for (Instance *instance in self.instances) {
+        if (instance.end) {
+            numInstances++;
+            total += [instance elapsedTimeInSeconds];
+        }
+    }
+    return (int)(total / (float)numInstances);
 }
 
 @end

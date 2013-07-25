@@ -87,4 +87,20 @@
     
     return [formatter stringFromDate:date];
 }
+
+- (NSString *)timeFormatFromSeconds:(NSInteger)seconds {
+    NSInteger hours = seconds / 3600;
+    NSInteger remaining = seconds - (hours * 3600);
+    
+    NSInteger minutes = remaining / 60;
+    remaining = remaining - minutes * 60;
+    
+    if (hours != 0) {
+        return [NSString stringWithFormat:@"%dh %dm %ds", hours, minutes, remaining];
+    } else if (minutes != 0) {
+        return [NSString stringWithFormat:@"%dm %ds", minutes, remaining];
+    }
+    return [NSString stringWithFormat:@"%ds", seconds];
+}
+
 @end

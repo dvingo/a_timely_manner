@@ -25,4 +25,6 @@
 @property (nonatomic, retain) NSString * photoPath;
 @property (nonatomic, retain) Task *task;
 
+- (int32_t)elapsedTimeInSeconds;
+
 @end

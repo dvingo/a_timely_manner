@@ -19,5 +19,6 @@ typedef enum {
 + (RITimeHelper *)sharedInstance;
 - (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate withFormat:(TimeFormatEnum)timeFormat;
 - (NSString *)dateStringFromDate:(NSDate *)date;
+- (NSString *)timeFormatFromSeconds:(NSInteger)seconds;
 
 @end

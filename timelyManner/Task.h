@@ -35,5 +35,6 @@ enum {
 - (void)removeInstances:(NSSet *)values;
 
 - (void)updateLastRun;
+- (NSInteger)averageInstanceTime;
 
 @end

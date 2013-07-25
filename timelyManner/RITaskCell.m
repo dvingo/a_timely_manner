@@ -7,6 +7,7 @@
 //
 
 #import "RITaskCell.h"
+#import "RITimeHelper.h"
 #import "Task.h"
 
 @interface RITaskCell ()
@@ -17,33 +18,22 @@
 @synthesize taskNameLabel;
 @synthesize dayLabel;
 @synthesize numActiveInstances;
+@synthesize averageInstanceTimeLabel;
 @synthesize dateFormatter = _dateFormatter;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-//    if (self) {
-//        self.dateFormatter = [NSDateFormatter new];
-//        self.dateFormatter.dateFormat = @"MMM d";
-//    }
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _dateFormatter = [NSDateFormatter new];
+        _dateFormatter = [NSDateFormatter new]; 
         _dateFormatter.dateFormat = @"MMM d";
     }
     return self;
 }
-//
-//- (id)init {
-//    self = [super init];
-//    if (self) {
-//        
-//    }
-//    return self;
-//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -60,6 +50,11 @@
     NSLog(@"in RITaskCell populateViewsWithTask lastRUN: %@", [f stringFromDate:task.lastRun]);
     NSLog(@"TASK CELL dateFormatter: %@", self.dateFormatter);
     NSLog(@"TASK CELL DAY LABEL: %@", [self.dateFormatter stringFromDate:task.lastRun]);
+    double avgTime = [task averageInstanceTime];
+    NSLog(@"AVERAGE TASK INSTANCE TIME: %f", avgTime);
+    NSString *avgTimeString =[[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
+    NSLog(@"avg time: %@", avgTimeString);
+    self.averageInstanceTimeLabel.text = [[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.dayLabel.text = [self.dateFormatter stringFromDate:task.lastRun];
     self.numActiveInstances.text = [NSString stringWithFormat:@"%d active", task.activeInstances.count];
 }
