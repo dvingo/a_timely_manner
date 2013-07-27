@@ -45,6 +45,12 @@
 		7BBB665F178B954B00F22C03 /* RIActiveInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB665E178B954B00F22C03 /* RIActiveInstancesViewController.m */; };
 		7BBB6663178B97F100F22C03 /* RICreateTimerTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */; };
 		7BBB6666178B980500F22C03 /* RICreateTripTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */; };
+		7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */; };
+		7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */; };
+		7BFD430617A468E800C5A79E /* RITripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430517A468E800C5A79E /* RITripCell.m */; };
+		7BFD430817A4690300C5A79E /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFD430717A4690300C5A79E /* TripCell.xib */; };
+		7BFD430B17A46E4600C5A79E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD430A17A46E4600C5A79E /* MapKit.framework */; };
+		7BFD430E17A4810200C5A79E /* RIStartTripInstanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430D17A4810200C5A79E /* RIStartTripInstanceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,15 @@
 		7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTimerTaskViewController.m; sourceTree = "<group>"; };
 		7BBB6664178B980500F22C03 /* RICreateTripTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RICreateTripTaskViewController.h; sourceTree = "<group>"; };
 		7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTripTaskViewController.m; sourceTree = "<group>"; };
+		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7BFD430117A4666E00C5A79E /* RITaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITaskDetailViewController.h; sourceTree = "<group>"; };
+		7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITaskDetailViewController.m; sourceTree = "<group>"; };
+		7BFD430417A468E800C5A79E /* RITripCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITripCell.h; sourceTree = "<group>"; };
+		7BFD430517A468E800C5A79E /* RITripCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITripCell.m; sourceTree = "<group>"; };
+		7BFD430717A4690300C5A79E /* TripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
+		7BFD430A17A46E4600C5A79E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7BFD430C17A4810200C5A79E /* RIStartTripInstanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIStartTripInstanceViewController.h; sourceTree = "<group>"; };
+		7BFD430D17A4810200C5A79E /* RIStartTripInstanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIStartTripInstanceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BFD430B17A46E4600C5A79E /* MapKit.framework in Frameworks */,
+				7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */,
 				7B22BC09177F2EE200AB36E4 /* UIKit.framework in Frameworks */,
 				7B22BC0B177F2EE200AB36E4 /* Foundation.framework in Frameworks */,
 				7B22BC0D177F2EE200AB36E4 /* CoreGraphics.framework in Frameworks */,
@@ -167,6 +184,8 @@
 		7B22BC07177F2EE200AB36E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BFD430A17A46E4600C5A79E /* MapKit.framework */,
+				7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */,
 				7B22BC08177F2EE200AB36E4 /* UIKit.framework */,
 				7B22BC0A177F2EE200AB36E4 /* Foundation.framework */,
 				7B22BC0C177F2EE200AB36E4 /* CoreGraphics.framework */,
@@ -230,7 +249,7 @@
 				7B96718017924AE1005D00E0 /* ActiveInstances */,
 				7BA37E36178CE0EA00CAED39 /* TaskDetailViews */,
 				7BBB6660178B97CD00F22C03 /* NewTasks */,
-				7BA85A2B1796195600091845 /* StartInstance */,
+				7BA85A2B1796195600091845 /* StartInstances */,
 				7BA85A371796426500091845 /* TaskList */,
 			);
 			name = ViewControllers;
@@ -241,7 +260,7 @@
 			children = (
 				7B96717A17924554005D00E0 /* ActiveInstance */,
 				7BA85A2C1796199A00091845 /* Task */,
-				7BA85A3217961BA500091845 /* Instance */,
+				7BA85A3217961BA500091845 /* Instances */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -286,17 +305,21 @@
 				7BA37E3B178CE11A00CAED39 /* RITimerDetailViewController.m */,
 				7BA37E3D178CE12B00CAED39 /* RITripDetailViewController.h */,
 				7BA37E3E178CE12B00CAED39 /* RITripDetailViewController.m */,
+				7BFD430117A4666E00C5A79E /* RITaskDetailViewController.h */,
+				7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */,
 			);
 			name = TaskDetailViews;
 			sourceTree = "<group>";
 		};
-		7BA85A2B1796195600091845 /* StartInstance */ = {
+		7BA85A2B1796195600091845 /* StartInstances */ = {
 			isa = PBXGroup;
 			children = (
 				7BA85A281796163B00091845 /* RIStartInstanceViewController.h */,
 				7BA85A291796163B00091845 /* RIStartInstanceViewController.m */,
+				7BFD430C17A4810200C5A79E /* RIStartTripInstanceViewController.h */,
+				7BFD430D17A4810200C5A79E /* RIStartTripInstanceViewController.m */,
 			);
-			name = StartInstance;
+			name = StartInstances;
 			sourceTree = "<group>";
 		};
 		7BA85A2C1796199A00091845 /* Task */ = {
@@ -309,14 +332,15 @@
 			name = Task;
 			sourceTree = "<group>";
 		};
-		7BA85A3217961BA500091845 /* Instance */ = {
+		7BA85A3217961BA500091845 /* Instances */ = {
 			isa = PBXGroup;
 			children = (
 				7BA85A30179619F300091845 /* InstanceCell.xib */,
 				7BA85A2D179619E100091845 /* RIInstanceCell.h */,
 				7BA85A2E179619E100091845 /* RIInstanceCell.m */,
+				7BFD430917A4690700C5A79E /* TripCell */,
 			);
-			name = Instance;
+			name = Instances;
 			sourceTree = "<group>";
 		};
 		7BA85A3317961C7800091845 /* Util */ = {
@@ -352,6 +376,16 @@
 				7BBB6655178B874800F22C03 /* RICreateTaskViewController.m */,
 			);
 			name = NewTasks;
+			sourceTree = "<group>";
+		};
+		7BFD430917A4690700C5A79E /* TripCell */ = {
+			isa = PBXGroup;
+			children = (
+				7BFD430417A468E800C5A79E /* RITripCell.h */,
+				7BFD430517A468E800C5A79E /* RITripCell.m */,
+				7BFD430717A4690300C5A79E /* TripCell.xib */,
+			);
+			name = TripCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +468,7 @@
 				7B351836177F324400E0FF72 /* TaskCell.xib in Resources */,
 				7B96717F179246CB005D00E0 /* ActiveInstanceCell.xib in Resources */,
 				7BA85A31179619F300091845 /* InstanceCell.xib in Resources */,
+				7BFD430817A4690300C5A79E /* TripCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +523,9 @@
 				7BA85A2A1796163B00091845 /* RIStartInstanceViewController.m in Sources */,
 				7BA85A2F179619E100091845 /* RIInstanceCell.m in Sources */,
 				7BA85A3617961C8B00091845 /* RITimeHelper.m in Sources */,
+				7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */,
+				7BFD430617A468E800C5A79E /* RITripCell.m in Sources */,
+				7BFD430E17A4810200C5A79E /* RIStartTripInstanceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

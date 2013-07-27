@@ -34,6 +34,9 @@ enum {
 - (void)addInstances:(NSSet *)values;
 - (void)removeInstances:(NSSet *)values;
 
+- (BOOL)isStopWatchTask;
+- (BOOL)isTripTask;
+
 - (void)updateLastRun;
 - (NSInteger)averageInstanceTime;
 

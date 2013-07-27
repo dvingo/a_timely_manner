@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kTripDetailScene @"tripDetailScene"
+
 @interface RITripDetailViewController : UITableViewController
 
 @end

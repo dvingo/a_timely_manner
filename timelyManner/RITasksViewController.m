@@ -10,6 +10,8 @@
 #import "RITasksViewController.h"
 #import "RICreateTaskViewController.h"
 #import "RIStopWatchDetailViewController.h"
+#import "RITaskDetailViewController.h"
+#import "RITripDetailViewController.h"
 #import "RITaskCell.h"
 #import "Task.h"
 #import "RITaskManager.h"
@@ -86,30 +88,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *selectedTask = (Task *)self.tasks[indexPath.row];
-    switch ([selectedTask.taskType intValue]) {
-
-        case kStopWatchTask: {
-            NSLog(@"stop watch task selected");
-            RIStopWatchDetailViewController *stopWatchDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stopWatchDetailScene"];
-            stopWatchDetailViewController.task = selectedTask;
-            [self.navigationController pushViewController:stopWatchDetailViewController animated:YES];
-            break;
-        }
-
-        case kTimerTask: {
-            NSLog(@"timer task selected");
-            break;
-        }
-
-        case kTripTask: {
-            NSLog(@"trip task selected");
-            break;
-        }
-
-        default:
-            NSLog(@"default in switch");
-            break;
-    }
+    
+    RITaskDetailViewController *taskDetailViewController =
+        [self.storyboard instantiateViewControllerWithIdentifier:ktaskDetailScene];
+    taskDetailViewController.task = selectedTask;
+    [self.navigationController pushViewController:taskDetailViewController animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

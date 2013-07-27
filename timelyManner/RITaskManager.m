@@ -15,10 +15,12 @@
 @interface RITaskManager ()
 @property (strong, nonatomic) NSArray *tasks;
 @property (strong, nonatomic) NSArray *activeTasks;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation RITaskManager
 @synthesize tasks, activeTasks;
+@synthesize locationManager;
 
 + (id)sharedInstance {
     static RITaskManager *__sharedInstance;
@@ -30,6 +32,18 @@
 
     return __sharedInstance;
 }
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        locationManager = [CLLocationManager new];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+        locationManager.distanceFilter = 500;
+    }
+    return self;
+}
+
 
 - (void)saveContext {
     RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -173,30 +187,46 @@
     return (NSDate *)((Instance *)[sortedInstances lastObject]).end;
 }
 
-- (Instance *)createInstanceWithTask:(Task *)paramTask {
+- (Instance *)createInstanceWithTask:(Task *)paramTask
+                       startLocation:(CLLocation *)startLocation
+                         endLocation:(CLLocation *)endLocation {
     RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     Instance *newInstance = (Instance *)[NSEntityDescription insertNewObjectForEntityForName:kInstanceName
                                                                       inManagedObjectContext:context];
-    //    Task *parentTask = (Task *)paramData[@"task"];
-    
     newInstance.createdAt = [NSDate date];
-    // TODO MOVE START TO NEXT SCENE (CONFIRMATION SCREEN
     newInstance.start = [NSDate date];
     newInstance.type = paramTask.taskType;
     newInstance.task = paramTask;
-
-    NSLog(@"ABOUT TO SET NEW ACTIVE INSTA");
-    NSLog(@"paramTask active instances: %@", paramTask.activeInstances);
+    
+    if (startLocation) {
+        newInstance.startLatitude = [NSNumber numberWithFloat:startLocation.coordinate.latitude];
+        newInstance.startLongitude = [NSNumber numberWithFloat:startLocation.coordinate.longitude];
+    }
+    if (endLocation) {
+        newInstance.endLatitude = [NSNumber numberWithFloat:endLocation.coordinate.latitude];
+        newInstance.endLongitude = [NSNumber numberWithFloat:endLocation.coordinate.longitude];
+    }
+    
     [paramTask addInstancesObject:newInstance];
     [context refreshObject:paramTask mergeChanges:YES];
-    NSLog(@"AFTER THAT");
-
+    
     NSError *error;
     [context save:&error];
     NSLog(@"instance created is: %@", newInstance);
     
     return newInstance;
+}
+
+- (void)createInstanceWithTask:(Task *)paramTask
+usingCurrentLocationAsStartLocation:(void(^)(void))completionBlock {
+    // After getting new location call callback
+    // use notifications
+}
+
+
+- (Instance *)createInstanceWithTask:(Task *)paramTask {
+    return [self createInstanceWithTask:paramTask startLocation:nil endLocation:nil];
 }
 
 - (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
@@ -214,6 +244,19 @@
 
 - (NSString *)timeElapsedSinceDate:(NSDate *)startDate {
     return [self timeBetweenStartDate:startDate endDate:[NSDate date]];
+}
+
+#pragma mark - LocationManager delegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    NSDate *eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              location.coordinate.latitude,
+              location.coordinate.longitude);
+    }
 }
 
 @end

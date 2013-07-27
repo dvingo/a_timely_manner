@@ -19,10 +19,22 @@
 @dynamic instances;
 @dynamic activeInstances;
 
+- (BOOL)isTripTask {
+    return [self.taskType intValue] == kTripTask;
+}
+
+- (BOOL)isStopWatchTask {
+    return [self.taskType intValue] == kStopWatchTask;
+}
+
 /**
  * Updates the lastRun for this task to the most recent of its instances end date.
  */
 - (void)updateLastRun {
+    if (self.instances.count == 0) {
+        return;
+    }
+    
     // Sort instances by end date
     NSArray *tempInstances = [self.instances allObjects];
     NSArray *sortedInstances = [tempInstances sortedArrayUsingComparator:^(id obj1, id obj2) {
