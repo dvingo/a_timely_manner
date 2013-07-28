@@ -33,9 +33,11 @@
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
     UIColor *textColor;
     if (numberIsEven(rowNumber)) {
+        NSLog(@"Cell row is even");
         self.cellContainerView.backgroundColor = kCellColorOne;
         textColor = kTextColorOne;
     } else {
+        NSLog(@"Cell row is odd");
         self.cellContainerView.backgroundColor = kCellColorTwo;
         textColor = kTextColorTwo;
     }
@@ -43,18 +45,22 @@
     self.elapsedTimeLabel.textColor = textColor;
     
     if (instance.end) {
-        //            NSLog(@"instance has end date: %@", instance.end);
+                    NSLog(@"instance has end date: %@", instance.end);
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:instance.end
                                                                               withFormat:kHoursMinutes];
+        NSLog(@"Elapsed time: %@", self.elapsedTimeLabel.text);
         
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
+        NSLog(@"date label: %@", self.dateLabel.text);
         self.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                endDate:instance.end
                                                                             withFormat:kstartEndHours];
+        NSLog(@"clock time label: %@", self.clockTimeLabel.text);
+        NSLog(@"\n\n\n");
     } else {
-        //            NSLog(@"instance does not have end date: %@", instance.end);
-        //            NSLog(@"instance start date: %@", instance.start);
+                    NSLog(@"instance does not have end date: %@", instance.end);
+                    NSLog(@"instance start date: %@", instance.start);
         NSDate *now = [NSDate date];
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:now

@@ -11,6 +11,7 @@
 #import "Instance.h"
 
 #define kTripInstanceCellIdentifier @"TripInstanceCell"
+#define kTripInstanceCellHeight 400.0f
 
 @interface RITripCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;

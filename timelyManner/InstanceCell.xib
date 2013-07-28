@@ -47,17 +47,17 @@
 									<object class="IBUILabel" id="600732846">
 										<reference key="NSNextResponder" ref="762342514"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{181, 0}, {104, 21}}</string>
+										<string key="NSFrame">{{186, 9}, {104, 21}}</string>
 										<reference key="NSSuperview" ref="762342514"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="25988402"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText"/>
+										<string key="IBUIText">clockTime</string>
 										<object class="NSColor" key="IBUITextColor" id="329224440">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -86,14 +86,14 @@
 										<string key="NSFrame">{{0, 35}, {116, 21}}</string>
 										<reference key="NSSuperview" ref="762342514"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
+										<reference key="NSNextKeyView" ref="600732846"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText"/>
+										<string key="IBUIText">Test</string>
 										<reference key="IBUITextColor" ref="329224440"/>
 										<reference key="IBUIHighlightedColor" ref="709666982"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -114,14 +114,14 @@
 										<string key="NSFrameSize">{130, 50}</string>
 										<reference key="NSSuperview" ref="762342514"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="600732846"/>
+										<reference key="NSNextKeyView" ref="25988402"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">123</string>
+										<string key="IBUIText">elap</string>
 										<reference key="IBUITextColor" ref="329224440"/>
 										<reference key="IBUIHighlightedColor" ref="709666982"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -197,19 +197,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">clockTimeLabel</string>
-						<reference key="source" ref="614458971"/>
-						<reference key="destination" ref="600732846"/>
-					</object>
-					<int key="connectionID">41</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">cellContainerView</string>
 						<reference key="source" ref="614458971"/>
 						<reference key="destination" ref="762342514"/>
 					</object>
 					<int key="connectionID">55</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clockTimeLabel</string>
+						<reference key="source" ref="614458971"/>
+						<reference key="destination" ref="600732846"/>
+					</object>
+					<int key="connectionID">41</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -243,9 +243,9 @@
 						<int key="objectID">43</int>
 						<reference key="object" ref="762342514"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="600732846"/>
 							<reference ref="25988402"/>
 							<reference ref="1001820081"/>
+							<reference ref="600732846"/>
 						</array>
 						<reference key="parent" ref="614458971"/>
 					</object>

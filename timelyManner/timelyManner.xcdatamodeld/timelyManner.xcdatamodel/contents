@@ -20,7 +20,7 @@
         <attribute name="taskType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="instances" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Instance" inverseName="task" inverseEntity="Instance" syncable="YES"/>
         <fetchedProperty name="activeInstances" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Instance" predicateString="end == nil"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Instance" predicateString="task == $FETCH_SOURCE and end == nil"/>
         </fetchedProperty>
     </entity>
     <elements>

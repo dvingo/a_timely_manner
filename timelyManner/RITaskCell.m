@@ -18,6 +18,7 @@
 @synthesize taskNameLabel;
 @synthesize dayLabel;
 @synthesize numActiveInstances;
+@synthesize numTotalInstancesLabel;
 @synthesize averageInstanceTimeLabel;
 @synthesize dateFormatter = _dateFormatter;
 
@@ -57,6 +58,7 @@
     self.averageInstanceTimeLabel.text = [[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.dayLabel.text = [self.dateFormatter stringFromDate:task.lastRun];
     self.numActiveInstances.text = [NSString stringWithFormat:@"%d active", task.activeInstances.count];
+    self.numTotalInstancesLabel.text = [NSString stringWithFormat:@"%d total", task.instances.count];
 }
 
 @end

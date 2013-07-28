@@ -453,7 +453,7 @@
         <scene sceneID="o04-uD-Gch">
             <objects>
                 <tableViewController storyboardIdentifier="activeInstancesScene" id="M45-wT-6gl" customClass="RIActiveInstancesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3ze-yv-1Ci">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3ze-yv-1Ci">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -549,6 +549,7 @@
                 <relationship kind="outlet" name="averageInstanceTimeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dayLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="numActiveInstances" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="numTotalInstancesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="taskNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

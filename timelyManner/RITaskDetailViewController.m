@@ -15,7 +15,6 @@
 
 @interface RITaskDetailViewController ()
 @property (strong, nonatomic) NSArray *instances;
-@property (strong, nonatomic) NSString *CellIdentifier;
 @end
 
 @implementation RITaskDetailViewController
@@ -35,6 +34,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.instances = [self.task.instances allObjects];
+    if (self.instances.count == 0) {
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 100.0, 200.0, 40.0)];
+        emptyLabel.text = @"No Instances. Start one.";
+        [self.view addSubview:emptyLabel];
+    } else {
+        // first see if we need to set it to alpha = 0
+        NSLog(@"here");
+    }
 }
 
 #pragma mark - Setup helpers
@@ -52,11 +59,13 @@
 
 - (void)createNewInstanceButtonPressed {
     if ([self.task isTripTask]) {
+        NSLog(@"ABOUT TO START TRIP INSTANCE");
         RIStartInstanceViewController *startTripInstanceViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
         startTripInstanceViewController.task = self.task;
         [self.navigationController pushViewController:startTripInstanceViewController animated:YES];
     } else {
+        NSLog(@"ABOUT TO START STOPWATCH INSTANCE");
         RIStartInstanceViewController *startInstanceViewController = [self.storyboard
                                                                       instantiateViewControllerWithIdentifier:kStartInstanceScene];
         startInstanceViewController.task = self.task;
@@ -65,16 +74,11 @@
 }
 
 - (void)setupTableView {
-    // Register tableview cells
-    if ([self.task isStopWatchTask]) {
-        self.CellIdentifier = kInstanceCellIdentifier;
-        UINib *instanceCellNib = [UINib nibWithNibName:kInstanceCellIdentifier bundle:nil];
-        [self.tableView registerNib:instanceCellNib forCellReuseIdentifier:kInstanceCellIdentifier];
-    } else if ([self.task isTripTask]) {
-        self.CellIdentifier = kTripInstanceCellIdentifier;
-        UINib *tripCellNib = [UINib nibWithNibName:@"TripCell" bundle:nil];
-        [self.tableView registerNib:tripCellNib forCellReuseIdentifier:kTripInstanceCellIdentifier];
-    }
+    UINib *instanceCellNib = [UINib nibWithNibName:kInstanceCellIdentifier bundle:nil];
+    [self.tableView registerNib:instanceCellNib forCellReuseIdentifier:kInstanceCellIdentifier];
+
+    UINib *tripCellNib = [UINib nibWithNibName:@"TripCell" bundle:nil];
+    [self.tableView registerNib:tripCellNib forCellReuseIdentifier:kTripInstanceCellIdentifier];
 }
 
 #pragma mark - Table view data source
@@ -88,24 +92,33 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.CellIdentifier forIndexPath:indexPath];
     if (self.instances && self.instances.count > 0) {
         Instance *instance = self.instances[indexPath.row];
 
         // StopWatch cell
         if ([self.task isStopWatchTask]) {
             // Config StopWatchCell
-            RIInstanceCell *cell = [tableView dequeueReusableCellWithIdentifier:self.CellIdentifier
-                                                                   forIndexPath:indexPath];
-            [cell populateCellWithInstance:instance rowNumber:indexPath.row];
+            NSLog(@"STOP WATCH CELL");
+            RIInstanceCell *instanceCell = [tableView dequeueReusableCellWithIdentifier:kInstanceCellIdentifier forIndexPath:indexPath];
+
+            [instanceCell populateCellWithInstance:instance rowNumber:indexPath.row];
+
+              NSLog(@"Elapsed time: %@", instanceCell.elapsedTimeLabel.text);
+            NSLog(@"date label: %@", instanceCell.dateLabel.text);
+            NSLog(@"clock time label: %@", instanceCell.clockTimeLabel.text);
+            NSLog(@"\n\n\n");
+            return instanceCell;
+
         // Trip cell
         } else if ([self.task isTripTask]) {
-            RITripCell *cell = [tableView dequeueReusableCellWithIdentifier:self.CellIdentifier
+            NSLog(@"Returning trip instance");
+            RITripCell *tripCell = [tableView dequeueReusableCellWithIdentifier:kTripInstanceCellIdentifier
                                                                forIndexPath:indexPath];
-            [cell populateCellWithInstance:instance rowNumber:indexPath.row];
+            [tripCell populateCellWithInstance:instance rowNumber:indexPath.row];
+            return tripCell;
         }
     }
-    return cell;
+    return nil;
 }
 
 #pragma mark - Table view delegate
@@ -115,6 +128,16 @@
         Instance *instance = self.instances[indexPath.row];
         NSLog(@"Got instance: %@", instance);
         // Go to instance detail view
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.task isStopWatchTask]) {
+        return kInstanceCellHeight;
+    } else if ([self.task isTripTask]) {
+        return kTripInstanceCellHeight;
+    } else {
+        return kInstanceCellHeight;
     }
 }
 

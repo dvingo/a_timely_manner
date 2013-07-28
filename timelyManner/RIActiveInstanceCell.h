@@ -18,5 +18,6 @@
 
 - (IBAction)stopTimerPressed:(id)sender;
 - (void)populateViews;
+- (void)updateTimerLengthLabel;
 
 @end

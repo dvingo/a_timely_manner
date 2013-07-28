@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numActiveInstances;
 @property (weak, nonatomic) IBOutlet UILabel *averageInstanceTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numTotalInstancesLabel;
 
 - (void)populateViewsWithTask:(Task *)task;
     
