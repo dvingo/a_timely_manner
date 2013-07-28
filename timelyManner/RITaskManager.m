@@ -44,7 +44,6 @@
     return self;
 }
 
-
 - (void)saveContext {
     RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
@@ -219,7 +218,7 @@
 }
 
 - (void)createInstanceWithTask:(Task *)paramTask
-usingCurrentLocationAsStartLocation:(void(^)(void))completionBlock {
+    usingCurrentLocationAsStartLocation:(void(^)(void))completionBlock {
     // After getting new location call callback
     // use notifications
 }

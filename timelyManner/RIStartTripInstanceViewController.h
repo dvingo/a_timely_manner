@@ -6,12 +6,13 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 #import "Task.h"
 
 #define kStartTripInstanceScene @"startTripInstanceScene"
 
-@interface RIStartTripInstanceViewController : UIViewController
+@interface RIStartTripInstanceViewController : UIViewController <CLLocationManagerDelegate>
 @property (strong, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 

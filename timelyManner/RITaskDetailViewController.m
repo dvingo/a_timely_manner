@@ -8,6 +8,8 @@
 
 #import "Instance.h"
 #import "RITaskDetailViewController.h"
+#import "RIStartInstanceViewController.h"
+#import "RIStartTripInstanceViewController.h"
 #import "RIInstanceCell.h"
 #import "RITripCell.h"
 
@@ -44,17 +46,23 @@
     UIBarButtonItem *addInstanceButton = [[UIBarButtonItem alloc]
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                           target:self
-                                          action:@selector(createNewInstance)];
+                                          action:@selector(createNewInstanceButtonPressed)];
     self.navigationItem.rightBarButtonItem = addInstanceButton;
 }
 
-- (void)createNewInstance {
-    RIStartInstanceViewController *startInstanceViewController = [self.storyboard
-                                                                  instantiateViewControllerWithIdentifier:kStartInstanceScene];
-    startInstanceViewController.task = self.task;
-    [self.navigationController pushViewController:startInstanceViewController animated:YES];
+- (void)createNewInstanceButtonPressed {
+    if ([self.task isTripTask]) {
+        RIStartInstanceViewController *startTripInstanceViewController =
+            [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
+        startTripInstanceViewController.task = self.task;
+        [self.navigationController pushViewController:startTripInstanceViewController animated:YES];
+    } else {
+        RIStartInstanceViewController *startInstanceViewController = [self.storyboard
+                                                                      instantiateViewControllerWithIdentifier:kStartInstanceScene];
+        startInstanceViewController.task = self.task;
+        [self.navigationController pushViewController:startInstanceViewController animated:YES];
+    }
 }
-
 
 - (void)setupTableView {
     // Register tableview cells
