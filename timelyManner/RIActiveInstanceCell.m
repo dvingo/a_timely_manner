@@ -41,6 +41,8 @@
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSLog(@"Last Run DATE: %@", [f stringFromDate:lastRunDate]);
     self.instance.task.lastRun = lastRunDate;
+    [[RITaskManager sharedInstance] saveContext];
+    [[RITaskManager sharedInstance] refreshTask:self.instance.task];
     
     if ([self.instance.task isTripTask]) {
         CLLocationManager *locationManager = [CLLocationManager new];
@@ -48,9 +50,6 @@
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
         locationManager.distanceFilter = 500;
         [locationManager startUpdatingLocation];
-    } else if ([self.instance.task isStopWatchTask]) {
-        [[RITaskManager sharedInstance] saveContext];
-        [[RITaskManager sharedInstance] refreshTask:self.instance.task];
     }
 }
 

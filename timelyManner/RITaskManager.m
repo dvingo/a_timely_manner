@@ -79,6 +79,8 @@
     NSMutableArray *activeInstances = [NSMutableArray new];
     for (Task *task in allTasks) {
         if (task.activeInstances.count > 0) {
+            NSLog(@"task with %d active: %@", task.activeInstances.count, task.name);
+            [self refreshTask:task];
             [activeInstances addObjectsFromArray:task.activeInstances];
         }
     }
