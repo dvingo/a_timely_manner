@@ -85,25 +85,6 @@
     return [activeInstances copy];
 }
 
-- (NSArray *)loadActiveTasks {
-    RIAppDelegate *appDelegate = (RIAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    NSEntityDescription *taskEntity = [NSEntityDescription entityForName:kTaskName
-                                                  inManagedObjectContext:context];
-    NSFetchRequest *taskRequest = [[NSFetchRequest alloc] init];
-    [taskRequest setEntity:taskEntity];
-    NSError *error;
-    NSArray *tempTasks = [context executeFetchRequest:taskRequest error:&error];
-    
-    if (error) {
-        NSLog(@"Error loading tasks: %@", error);
-    }
-    
-    NSPredicate *activePredicate = [NSPredicate predicateWithFormat:@"SELF.end == nil"];
-    self.activeTasks = [tempTasks filteredArrayUsingPredicate:activePredicate];
-    return self.activeTasks;
-}
-
 #pragma mark - Saving methods
 
 - (Task *)saveTaskWithName:(NSString *)paramName taskType:(int)paramTaskType {
@@ -117,8 +98,9 @@
     newTask.avgTime = nil;
     newTask.instances = nil;
     
-    if (paramTaskType < 0 || paramTaskType > 2) {
-        paramTaskType = 1;
+    // Error handle a bad task type
+    if (paramTaskType < kStopWatchTask || paramTaskType > kTripTask) {
+        paramTaskType = kStopWatchTask;
     }
 
     newTask.taskType = @(paramTaskType);
@@ -180,10 +162,9 @@
     NSDate *firstEndDate = first.end;
     NSDate *lastEndDate = last.end;
     
-    
     NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
     NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
-    return (NSDate *)((Instance *)[sortedInstances lastObject]).end;
+    return ((Instance *)[sortedInstances lastObject]).end;
 }
 
 - (Instance *)createInstanceWithTask:(Task *)paramTask
@@ -222,7 +203,6 @@
     // After getting new location call callback
     // use notifications
 }
-
 
 - (Instance *)createInstanceWithTask:(Task *)paramTask {
     return [self createInstanceWithTask:paramTask startLocation:nil endLocation:nil];

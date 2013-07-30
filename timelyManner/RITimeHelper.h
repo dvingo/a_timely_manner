@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    kHoursMinutes,
-    kstartEndHours,
-    kstopWatch
+    kHoursMinutesSeconds, /* 4h3m2s       */
+    kstartEndHours,       /* 9:34 - 10:34 */
+    kstopWatch            /* 03:23:13     */
 } TimeFormatEnum;
 
 @interface RITimeHelper : NSObject

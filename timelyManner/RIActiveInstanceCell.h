@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
 #import "Instance.h"
 
-@interface RIActiveInstanceCell : UITableViewCell
+@interface RIActiveInstanceCell : UITableViewCell <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *timerLengthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *taskLabel;

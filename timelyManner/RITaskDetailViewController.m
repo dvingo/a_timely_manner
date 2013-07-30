@@ -60,7 +60,7 @@
 - (void)createNewInstanceButtonPressed {
     if ([self.task isTripTask]) {
         NSLog(@"ABOUT TO START TRIP INSTANCE");
-        RIStartInstanceViewController *startTripInstanceViewController =
+        RIStartTripInstanceViewController *startTripInstanceViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
         startTripInstanceViewController.task = self.task;
         [self.navigationController pushViewController:startTripInstanceViewController animated:YES];

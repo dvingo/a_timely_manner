@@ -9,6 +9,8 @@
 #import "RITripCell.h"
 #import "RITimeHelper.h"
 
+#define METERS_PER_MILE 1609.344
+
 @implementation RITripCell
 @synthesize elapsedTimeLabel;
 @synthesize clockTimeLabel;
@@ -27,11 +29,9 @@
 
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
     if (instance.end) {
-        //            NSLog(@"instance has end date: %@", instance.end);
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:instance.end
-                                                                              withFormat:kHoursMinutes];
-        
+                                                                              withFormat:kHoursMinutesSeconds];
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
         self.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                endDate:instance.end
@@ -40,14 +40,29 @@
         NSDate *now = [NSDate date];
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:now
-                                                                              withFormat:kHoursMinutes];
-        
+                                                                              withFormat:kHoursMinutesSeconds];
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:now];
-        
         self.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                endDate:now
                                                                             withFormat:kstartEndHours];
     }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    [self setupMapWithInstance:instance];
+}
+
+- (void)setupMapWithInstance:(Instance *)instance {
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(
+                                        [instance.startLatitude doubleValue],
+                                        [instance.startLongitude doubleValue]);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coord,
+                                                                0.5 * METERS_PER_MILE,
+                                                                0.5 * METERS_PER_MILE);
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+    [self.mapView setRegion:adjustedRegion];
+    
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = coord;
+    [self.mapView addAnnotation:point];
 }
 
 @end

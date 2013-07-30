@@ -48,7 +48,7 @@
                     NSLog(@"instance has end date: %@", instance.end);
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:instance.end
-                                                                              withFormat:kHoursMinutes];
+                                                                              withFormat:kHoursMinutesSeconds];
         NSLog(@"Elapsed time: %@", self.elapsedTimeLabel.text);
         
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
@@ -64,7 +64,7 @@
         NSDate *now = [NSDate date];
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:now
-                                                                              withFormat:kHoursMinutes];
+                                                                              withFormat:kHoursMinutesSeconds];
 
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:now];
         
@@ -72,6 +72,7 @@
                                                                                endDate:now
                                                                             withFormat:kstartEndHours];
     }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 BOOL numberIsEven(int number) {

@@ -20,7 +20,9 @@
     return __sharedInstance;
 }
 
-- (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate withFormat:(TimeFormatEnum)timeFormat {
+- (NSString *)timeBetweenStartDate:(NSDate *)startDate
+                           endDate:(NSDate *)endDate
+                        withFormat:(TimeFormatEnum)timeFormat {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
                                            fromDate:startDate
@@ -31,14 +33,19 @@
     int seconds = [comps second];
     
     switch (timeFormat) {
-        case kHoursMinutes: {
+            
+        case kHoursMinutesSeconds: {
             NSLog(@"hours minutes format");
             if (hours > 0) {
                 NSLog(@"returning: %@",[NSString stringWithFormat:@"%dh %dm", hours, minutes]);
                 return [NSString stringWithFormat:@"%dh %dm", hours, minutes];
+            } else if (minutes > 0) {
+                NSLog(@"returning: %@", [NSString stringWithFormat:@"%dm", minutes]);
+                return [NSString stringWithFormat:@"%dm", minutes];
+            } else {
+                NSLog(@"returning: %@", [NSString stringWithFormat:@"%ds", seconds]);
+                return [NSString stringWithFormat:@"%ds", seconds];
             }
-            NSLog(@"returning: %@", [NSString stringWithFormat:@"%dm", minutes]);
-            return [NSString stringWithFormat:@"%dm", minutes];
         }
         
         case kstartEndHours: {

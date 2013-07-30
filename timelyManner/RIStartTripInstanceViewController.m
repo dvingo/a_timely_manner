@@ -25,20 +25,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     self.locationManager.distanceFilter = 500;
+    
+    self.taskNameLabel.text = self.task.name;
 }
 
 - (IBAction)goButtonPressed:(id)sender {
     NSLog(@"creating new instance");
     [self.locationManager startUpdatingLocation];
+    // show spinner
 }
 
 #pragma mark - LocationManager delegate
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
     NSDate *eventDate = location.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
@@ -47,6 +51,12 @@
               location.coordinate.latitude,
               location.coordinate.longitude);
     }
+    NSLog(@"creating new TRIP instance");
+    [[RITaskManager sharedInstance] createInstanceWithTask:self.task
+                                             startLocation:location
+                                               endLocation:nil];
+    [self.tabBarController setSelectedIndex:1];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

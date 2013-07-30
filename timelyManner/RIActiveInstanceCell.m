@@ -42,8 +42,16 @@
     NSLog(@"Last Run DATE: %@", [f stringFromDate:lastRunDate]);
     self.instance.task.lastRun = lastRunDate;
     
-    [[RITaskManager sharedInstance] saveContext];
-    [[RITaskManager sharedInstance] refreshTask:self.instance.task];
+    if ([self.instance.task isTripTask]) {
+        CLLocationManager *locationManager = [CLLocationManager new];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+        locationManager.distanceFilter = 500;
+        [locationManager startUpdatingLocation];
+    } else if ([self.instance.task isStopWatchTask]) {
+        [[RITaskManager sharedInstance] saveContext];
+        [[RITaskManager sharedInstance] refreshTask:self.instance.task];
+    }
 }
 
 - (void)populateViews {
@@ -59,6 +67,27 @@
     if (self.instance.end == nil) {
         self.timerLengthLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:self.instance.start];
     }
+}
+
+#pragma mark - Location manager delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+    NSDate *eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              location.coordinate.latitude,
+              location.coordinate.longitude);
+    }
+    self.instance.endLatitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+    self.instance.endLongitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+    [[RITaskManager sharedInstance] saveContext];
+    [[RITaskManager sharedInstance] refreshTask:self.instance.task];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"Location failed");
 }
 
 @end
