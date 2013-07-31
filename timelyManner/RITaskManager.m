@@ -35,12 +35,6 @@
 
 - (id)init {
     self = [super init];
-    if (self) {
-        locationManager = [CLLocationManager new];
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-        locationManager.distanceFilter = 500;
-    }
     return self;
 }
 
@@ -225,19 +219,6 @@
 
 - (NSString *)timeElapsedSinceDate:(NSDate *)startDate {
     return [self timeBetweenStartDate:startDate endDate:[NSDate date]];
-}
-
-#pragma mark - LocationManager delegate
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = [locations lastObject];
-    NSDate *eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
-        NSLog(@"latitude %+.6f, longitude %+.6f\n",
-              location.coordinate.latitude,
-              location.coordinate.longitude);
-    }
 }
 
 @end

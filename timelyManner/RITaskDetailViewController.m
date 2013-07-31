@@ -33,7 +33,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.instances = [self.task.instances allObjects];
+    self.instances = [[self.task.instances allObjects] sortedArrayUsingComparator:^(id obj1, id obj2) {
+        Instance *i1 = (Instance *)obj1;
+        Instance *i2 = (Instance *)obj2;
+        return [i2.start compare:i1.start];
+    }];
     if (self.instances.count == 0) {
         UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 100.0, 200.0, 40.0)];
         emptyLabel.text = @"No Instances. Start one.";
@@ -103,7 +107,7 @@
 
             [instanceCell populateCellWithInstance:instance rowNumber:indexPath.row];
 
-              NSLog(@"Elapsed time: %@", instanceCell.elapsedTimeLabel.text);
+            NSLog(@"Elapsed time: %@", instanceCell.elapsedTimeLabel.text);
             NSLog(@"date label: %@", instanceCell.dateLabel.text);
             NSLog(@"clock time label: %@", instanceCell.clockTimeLabel.text);
             NSLog(@"\n\n\n");
@@ -111,10 +115,14 @@
 
         // Trip cell
         } else if ([self.task isTripTask]) {
-            NSLog(@"Returning trip instance");
+            NSLog(@"TRIP CELL");
             RITripCell *tripCell = [tableView dequeueReusableCellWithIdentifier:kTripInstanceCellIdentifier
                                                                forIndexPath:indexPath];
             [tripCell populateCellWithInstance:instance rowNumber:indexPath.row];
+            NSDateFormatter *f = [NSDateFormatter new];
+            f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+            NSLog(@"TRIP CELL END DATE: %@", [f stringFromDate:instance.end]);
+            NSLog(@"END LOC: %@, %@", instance.endLatitude, instance.endLongitude);
             return tripCell;
         }
     }

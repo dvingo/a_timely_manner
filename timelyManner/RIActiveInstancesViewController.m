@@ -112,6 +112,7 @@
     
     if (self.activeInstances && self.activeInstances.count > 0) {
         Instance *instance = (Instance *)[self.activeInstances objectAtIndex:indexPath.row];
+        // This should be changed to [cell populateViewsWithInstance:instance];
         cell.instance = instance;
         [cell populateViews];
     }

@@ -51,18 +51,35 @@
 }
 
 - (void)setupMapWithInstance:(Instance *)instance {
-    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(
+    CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(
                                         [instance.startLatitude doubleValue],
                                         [instance.startLongitude doubleValue]);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(coord,
+    CLLocationCoordinate2D endLocation = CLLocationCoordinate2DMake(
+                                                [instance.endLatitude doubleValue],
+                                                [instance.endLongitude doubleValue]);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(startLocation,
                                                                 0.5 * METERS_PER_MILE,
                                                                 0.5 * METERS_PER_MILE);
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
     [self.mapView setRegion:adjustedRegion];
     
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = coord;
-    [self.mapView addAnnotation:point];
+    CLLocationCoordinate2D coordinateArray[2];
+    coordinateArray[0] = startLocation;
+    coordinateArray[1] = endLocation;
+
+    MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinateArray count:2];
+    [self.mapView addOverlay:line];
+    
+    MKPointAnnotation *startPoint = [[MKPointAnnotation alloc] init];
+    startPoint.title = @"Start";
+    startPoint.coordinate = startLocation;
+    
+    MKPointAnnotation *endPoint = [[MKPointAnnotation alloc] init];
+    endPoint.coordinate = endLocation;
+    endPoint.title = @"End";
+    
+    [self.mapView addAnnotation:startPoint];
+    [self.mapView addAnnotation:endPoint];
 }
 
 @end

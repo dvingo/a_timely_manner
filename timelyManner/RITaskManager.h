@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
-#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 #import "Task.h"
 #import "Instance.h"
 
-@interface RITaskManager : NSObject <CLLocationManagerDelegate>
+@interface RITaskManager : NSObject 
 
 + (RITaskManager *)sharedInstance;
 - (void)saveContext;
@@ -28,5 +27,6 @@
 - (Instance *)createInstanceWithTask:(Task *)paramTask;
 - (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 - (NSString *)timeElapsedSinceDate:(NSDate *)startDate;
+//- (void)populateEndLocationWithInstance:(Instance *)instance;
 
 @end

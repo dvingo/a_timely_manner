@@ -45,6 +45,7 @@
 		7BBB665F178B954B00F22C03 /* RIActiveInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB665E178B954B00F22C03 /* RIActiveInstancesViewController.m */; };
 		7BBB6663178B97F100F22C03 /* RICreateTimerTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */; };
 		7BBB6666178B980500F22C03 /* RICreateTripTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */; };
+		7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3A45517A94ACC008006A8 /* RILocationManager.m */; };
 		7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */; };
 		7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */; };
 		7BFD430617A468E800C5A79E /* RITripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430517A468E800C5A79E /* RITripCell.m */; };
@@ -123,6 +124,8 @@
 		7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTimerTaskViewController.m; sourceTree = "<group>"; };
 		7BBB6664178B980500F22C03 /* RICreateTripTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RICreateTripTaskViewController.h; sourceTree = "<group>"; };
 		7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTripTaskViewController.m; sourceTree = "<group>"; };
+		7BE3A45417A94ACC008006A8 /* RILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RILocationManager.h; sourceTree = "<group>"; };
+		7BE3A45517A94ACC008006A8 /* RILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RILocationManager.m; sourceTree = "<group>"; };
 		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7BFD430117A4666E00C5A79E /* RITaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITaskDetailViewController.h; sourceTree = "<group>"; };
 		7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITaskDetailViewController.m; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 				7BBB665B178B8E8400F22C03 /* RITaskManager.m */,
 				7BA85A3417961C8B00091845 /* RITimeHelper.h */,
 				7BA85A3517961C8B00091845 /* RITimeHelper.m */,
+				7BE3A45417A94ACC008006A8 /* RILocationManager.h */,
+				7BE3A45517A94ACC008006A8 /* RILocationManager.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */,
 				7BFD430617A468E800C5A79E /* RITripCell.m in Sources */,
 				7BFD430E17A4810200C5A79E /* RIStartTripInstanceViewController.m in Sources */,
+				7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
