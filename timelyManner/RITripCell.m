@@ -26,7 +26,6 @@
     [super setSelected:selected animated:animated];
 }
 
-
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
     if (instance.end) {
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
@@ -51,22 +50,37 @@
 }
 
 - (void)setupMapWithInstance:(Instance *)instance {
+    self.mapView.delegate = self;
     CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(
                                         [instance.startLatitude doubleValue],
                                         [instance.startLongitude doubleValue]);
     CLLocationCoordinate2D endLocation = CLLocationCoordinate2DMake(
                                                 [instance.endLatitude doubleValue],
                                                 [instance.endLongitude doubleValue]);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(startLocation,
-                                                                0.5 * METERS_PER_MILE,
-                                                                0.5 * METERS_PER_MILE);
-    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
-    [self.mapView setRegion:adjustedRegion];
     
     CLLocationCoordinate2D coordinateArray[2];
     coordinateArray[0] = startLocation;
     coordinateArray[1] = endLocation;
-
+    
+    // Create rectangle that fits the start and end point
+    // TODO fit all point in instance.locations
+    MKMapRect r = MKMapRectNull;    
+    for (NSUInteger i=0; i<2; ++i) {
+        MKMapPoint p = MKMapPointForCoordinate(coordinateArray[i]);
+        NSLog(@"point x y: %f, %f", p.x, p.y);
+        r = MKMapRectUnion(r, MKMapRectMake(p.x, p.y, 0, 0));
+    }
+    MKCoordinateRegion viewRegion = MKCoordinateRegionForMapRect(r);
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+    [self.mapView setRegion:adjustedRegion];
+    
+    // Make the rectangle twice as large, effectively zooming out the mapview
+    MKCoordinateRegion region = self.mapView.region;
+    region.center = self.mapView.centerCoordinate;
+    region.span.longitudeDelta *= 2; // Bigger the value, closer the map view
+    region.span.latitudeDelta *= 2;
+    [self.mapView setRegion:region animated:YES];
+    
     MKPolyline *line = [MKPolyline polylineWithCoordinates:coordinateArray count:2];
     [self.mapView addOverlay:line];
     
@@ -80,6 +94,13 @@
     
     [self.mapView addAnnotation:startPoint];
     [self.mapView addAnnotation:endPoint];
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    MKPolylineView *aView = [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)overlay];
+    aView.lineWidth = 7.0;
+    aView.strokeColor = [UIColor redColor];
+    return aView;
 }
 
 @end

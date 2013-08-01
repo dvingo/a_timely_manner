@@ -11,7 +11,13 @@
         <attribute name="startLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="startLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Location" inverseName="instance" inverseEntity="Location" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="instances" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Location" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="instance" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" inverseName="locations" inverseEntity="Instance" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="avgTime" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -24,7 +30,8 @@
         </fetchedProperty>
     </entity>
     <elements>
-        <element name="Instance" positionX="160" positionY="192" width="128" height="208"/>
+        <element name="Instance" positionX="160" positionY="192" width="128" height="225"/>
+        <element name="Location" positionX="367" positionY="243" width="128" height="90"/>
         <element name="Task" positionX="-180" positionY="213" width="128" height="149"/>
     </elements>
 </model>

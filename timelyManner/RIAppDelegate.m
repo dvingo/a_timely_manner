@@ -92,8 +92,18 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"timelyManner.sqlite"];
     
     NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                   initWithManagedObjectModel:[self managedObjectModel]];
+    
+    NSDictionary *persistentStoreCoordinatorOptions = @{NSMigratePersistentStoresAutomaticallyOption: @YES,
+                                                        NSInferMappingModelAutomaticallyOption: @YES};
+    
+    NSPersistentStore *store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                             configuration:nil
+                                                                       URL:storeURL
+                                                                   options:persistentStoreCoordinatorOptions
+                                                                     error:&error];
+    if (!store) {
         /*
          Replace this implementation with code to handle the error appropriately.
          

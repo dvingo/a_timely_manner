@@ -13,7 +13,7 @@
 #define kTripInstanceCellIdentifier @"TripInstanceCell"
 #define kTripInstanceCellHeight 400.0f
 
-@interface RITripCell : UITableViewCell
+@interface RITripCell : UITableViewCell <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *clockTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
