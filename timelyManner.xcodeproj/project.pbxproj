@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0DDFD817C1450900E0A0F3 /* timer-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0DDFD717C1450900E0A0F3 /* timer-icon@2x.png */; };
+		7B0DDFDA17C1452100E0A0F3 /* plus-sign-light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0DDFD917C1452100E0A0F3 /* plus-sign-light@2x.png */; };
+		7B0DDFDC17C1452B00E0A0F3 /* orange-button-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0DDFDB17C1452B00E0A0F3 /* orange-button-round@2x.png */; };
+		7B0DDFDE17C1455100E0A0F3 /* task-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0DDFDD17C1455100E0A0F3 /* task-list@2x.png */; };
 		7B22BC09177F2EE200AB36E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B22BC08177F2EE200AB36E4 /* UIKit.framework */; };
 		7B22BC0B177F2EE200AB36E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B22BC0A177F2EE200AB36E4 /* Foundation.framework */; };
 		7B22BC0D177F2EE200AB36E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B22BC0C177F2EE200AB36E4 /* CoreGraphics.framework */; };
@@ -45,6 +49,8 @@
 		7BBB665F178B954B00F22C03 /* RIActiveInstancesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB665E178B954B00F22C03 /* RIActiveInstancesViewController.m */; };
 		7BBB6663178B97F100F22C03 /* RICreateTimerTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */; };
 		7BBB6666178B980500F22C03 /* RICreateTripTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */; };
+		7BDF45B617C14B75004FFAB3 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45B517C14B75004FFAB3 /* app-icon.png */; };
+		7BDF45B817C14B78004FFAB3 /* app-icon-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45B717C14B78004FFAB3 /* app-icon-blue@2x.png */; };
 		7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3A45517A94ACC008006A8 /* RILocationManager.m */; };
 		7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */; };
 		7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */; };
@@ -65,7 +71,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B22BC05177F2EE200AB36E4 /* timelyManner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timelyManner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B0DDFD717C1450900E0A0F3 /* timer-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer-icon@2x.png"; sourceTree = "<group>"; };
+		7B0DDFD917C1452100E0A0F3 /* plus-sign-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-sign-light@2x.png"; sourceTree = "<group>"; };
+		7B0DDFDB17C1452B00E0A0F3 /* orange-button-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-round@2x.png"; sourceTree = "<group>"; };
+		7B0DDFDD17C1455100E0A0F3 /* task-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "task-list@2x.png"; sourceTree = "<group>"; };
+		7B22BC05177F2EE200AB36E4 /* YourTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B22BC08177F2EE200AB36E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B22BC0A177F2EE200AB36E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7B22BC0C177F2EE200AB36E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +134,8 @@
 		7BBB6662178B97F100F22C03 /* RICreateTimerTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTimerTaskViewController.m; sourceTree = "<group>"; };
 		7BBB6664178B980500F22C03 /* RICreateTripTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RICreateTripTaskViewController.h; sourceTree = "<group>"; };
 		7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTripTaskViewController.m; sourceTree = "<group>"; };
+		7BDF45B517C14B75004FFAB3 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		7BDF45B717C14B78004FFAB3 /* app-icon-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon-blue@2x.png"; sourceTree = "<group>"; };
 		7BE3A45417A94ACC008006A8 /* RILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RILocationManager.h; sourceTree = "<group>"; };
 		7BE3A45517A94ACC008006A8 /* RILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RILocationManager.m; sourceTree = "<group>"; };
 		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -165,9 +177,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B0DDFD617C144F800E0A0F3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7B0DDFDD17C1455100E0A0F3 /* task-list@2x.png */,
+				7B0DDFDB17C1452B00E0A0F3 /* orange-button-round@2x.png */,
+				7B0DDFD917C1452100E0A0F3 /* plus-sign-light@2x.png */,
+				7B0DDFD717C1450900E0A0F3 /* timer-icon@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		7B22BBFC177F2EE200AB36E4 = {
 			isa = PBXGroup;
 			children = (
+				7BDF45B717C14B78004FFAB3 /* app-icon-blue@2x.png */,
+				7BDF45B517C14B75004FFAB3 /* app-icon.png */,
 				7B22BC10177F2EE200AB36E4 /* timelyManner */,
 				7B22BC32177F2EE200AB36E4 /* timelyMannerTests */,
 				7B22BC07177F2EE200AB36E4 /* Frameworks */,
@@ -178,7 +203,7 @@
 		7B22BC06177F2EE200AB36E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B22BC05177F2EE200AB36E4 /* timelyManner.app */,
+				7B22BC05177F2EE200AB36E4 /* YourTime.app */,
 				7B22BC2A177F2EE200AB36E4 /* timelyMannerTests.octest */,
 			);
 			name = Products;
@@ -216,6 +241,7 @@
 		7B22BC11177F2EE200AB36E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B0DDFD617C144F800E0A0F3 /* Images */,
 				7B22BC12177F2EE200AB36E4 /* timelyManner-Info.plist */,
 				7B22BC13177F2EE200AB36E4 /* InfoPlist.strings */,
 				7B22BC16177F2EE200AB36E4 /* main.m */,
@@ -396,9 +422,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B22BC04177F2EE200AB36E4 /* timelyManner */ = {
+		7B22BC04177F2EE200AB36E4 /* YourTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7B22BC3D177F2EE200AB36E4 /* Build configuration list for PBXNativeTarget "timelyManner" */;
+			buildConfigurationList = 7B22BC3D177F2EE200AB36E4 /* Build configuration list for PBXNativeTarget "YourTime" */;
 			buildPhases = (
 				7B22BC01177F2EE200AB36E4 /* Sources */,
 				7B22BC02177F2EE200AB36E4 /* Frameworks */,
@@ -408,9 +434,9 @@
 			);
 			dependencies = (
 			);
-			name = timelyManner;
+			name = YourTime;
 			productName = timelyManner;
-			productReference = 7B22BC05177F2EE200AB36E4 /* timelyManner.app */;
+			productReference = 7B22BC05177F2EE200AB36E4 /* YourTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7B22BC29177F2EE200AB36E4 /* timelyMannerTests */ = {
@@ -454,7 +480,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B22BC04177F2EE200AB36E4 /* timelyManner */,
+				7B22BC04177F2EE200AB36E4 /* YourTime */,
 				7B22BC29177F2EE200AB36E4 /* timelyMannerTests */,
 			);
 		};
@@ -474,6 +500,12 @@
 				7B96717F179246CB005D00E0 /* ActiveInstanceCell.xib in Resources */,
 				7BA85A31179619F300091845 /* InstanceCell.xib in Resources */,
 				7BFD430817A4690300C5A79E /* TripCell.xib in Resources */,
+				7B0DDFD817C1450900E0A0F3 /* timer-icon@2x.png in Resources */,
+				7B0DDFDA17C1452100E0A0F3 /* plus-sign-light@2x.png in Resources */,
+				7B0DDFDC17C1452B00E0A0F3 /* orange-button-round@2x.png in Resources */,
+				7B0DDFDE17C1455100E0A0F3 /* task-list@2x.png in Resources */,
+				7BDF45B617C14B75004FFAB3 /* app-icon.png in Resources */,
+				7BDF45B817C14B78004FFAB3 /* app-icon-blue@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +580,7 @@
 /* Begin PBXTargetDependency section */
 		7B22BC31177F2EE200AB36E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7B22BC04177F2EE200AB36E4 /* timelyManner */;
+			target = 7B22BC04177F2EE200AB36E4 /* YourTime */;
 			targetProxy = 7B22BC30177F2EE200AB36E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -697,7 +729,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7B22BC3D177F2EE200AB36E4 /* Build configuration list for PBXNativeTarget "timelyManner" */ = {
+		7B22BC3D177F2EE200AB36E4 /* Build configuration list for PBXNativeTarget "YourTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B22BC3E177F2EE200AB36E4 /* Debug */,
