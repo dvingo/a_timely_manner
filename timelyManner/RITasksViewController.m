@@ -15,9 +15,9 @@
 #import "RITaskCell.h"
 #import "Task.h"
 #import "RITaskManager.h"
+#import "RIConstants.h"
 
 #define kTaskCellIdentifier @"TaskCell"
-#define kBackgroundColor [UIColor colorWithRed:236.0/255.0f green:236.0/255.0f blue:236.0/255.0f alpha:1.0f]
 #define kRowHeight 80.0f
 
 @interface RITasksViewController ()
@@ -34,12 +34,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.tableView.frame = self.view.frame;
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
-    
-    self.navigationItem.title = @"Tasks";
-    
+
+    [self setupNavBar];
     [self setupTableView];
+}
+
+- (void)setupNavBar {
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120.0, 44.0)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"Tasks";
+    titleLabel.textColor = kDarkBlueColor;
+    titleLabel.font = [UIFont systemFontOfSize:24.0];
+    self.navigationItem.titleView = titleLabel;
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40.0, 30.0)];
+    [button setBackgroundImage:[UIImage imageNamed:@"plus-sign-light"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(createNewTaskPressed:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = plusButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,7 +67,7 @@
     // Register Task Cell
     UINib *taskCellNib = [UINib nibWithNibName:kTaskCellIdentifier bundle:nil];
     [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kTaskCellIdentifier];
-    self.tableView.backgroundColor = kBackgroundColor;
+    self.tableView.backgroundColor = kLightGreyColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +103,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Task *selectedTask = (Task *)self.tasks[indexPath.row];
-    
     RITaskDetailViewController *taskDetailViewController =
         [self.storyboard instantiateViewControllerWithIdentifier:ktaskDetailScene];
     taskDetailViewController.task = selectedTask;
@@ -99,9 +113,11 @@
     return kRowHeight;
 }
 
-- (IBAction)newTaskButtonPressed:(id)sender {
+#pragma mark - Create New Task Button
+
+- (void)createNewTaskPressed:(id)sender {
     RICreateTaskViewController *createTaskViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"createTaskScene"];
-    [self.navigationController pushViewController:createTaskViewController animated:YES ];
+    [self.navigationController pushViewController:createTaskViewController animated:YES];
 }
 
 @end

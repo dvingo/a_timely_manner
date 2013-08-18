@@ -10,6 +10,4 @@
 
 @interface RITasksViewController : UITableViewController
 
-- (IBAction)newTaskButtonPressed:(id)sender;
-
 @end

@@ -8,6 +8,7 @@
 
 #import "RIStartTripInstanceViewController.h"
 #import "RITaskManager.h"
+#import "RIConstants.h"
 
 @interface RIStartTripInstanceViewController ()
 @property (strong, nonatomic) CLLocationManager *locationManager;

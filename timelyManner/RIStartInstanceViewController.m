@@ -9,6 +9,7 @@
 #import "RIStartInstanceViewController.h"
 #import "RIActiveInstancesViewController.h"
 #import "RITaskManager.h"
+#import "RIConstants.h"
 
 @implementation RIStartInstanceViewController
 @synthesize taskNameLabel;
@@ -21,6 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.taskNameLabel.text = [NSString stringWithFormat:@"\"%@\"", self.task.name];
+    UIImage *buttonImage = [[UIImage imageNamed:kOrangeButtonImage] resizableImageWithCapInsets:UIEdgeInsetsMake(6.0, 6.0, 6.0, 6.0)];
+    self.goButton.backgroundColor = [UIColor clearColor];
+    
+    [self.goButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [self.goButton setBackgroundImage:buttonImage forState:UIControlStateSelected];
 }
 
 - (void)didReceiveMemoryWarning {

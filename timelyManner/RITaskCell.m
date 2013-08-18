@@ -9,6 +9,7 @@
 #import "RITaskCell.h"
 #import "RITimeHelper.h"
 #import "Task.h"
+#import "RIConstants.h"
 
 @interface RITaskCell ()
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
@@ -30,19 +31,15 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _dateFormatter = [NSDateFormatter new]; 
+        _dateFormatter = [NSDateFormatter new];
         _dateFormatter.dateFormat = @"MMM d";
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)populateViewsWithTask:(Task *)task {
     self.taskNameLabel.text = task.name;
-
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     if (task.lastRun == nil) {
@@ -59,6 +56,24 @@
     self.dayLabel.text = [self.dateFormatter stringFromDate:task.lastRun];
     self.numActiveInstances.text = [NSString stringWithFormat:@"%d active", task.activeInstances.count];
     self.numTotalInstancesLabel.text = [NSString stringWithFormat:@"%d total", task.instances.count];
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
+        self.taskNameLabel.textColor = [UIColor whiteColor];
+        self.averageInstanceTimeLabel.textColor = [UIColor whiteColor];
+        self.dayLabel.textColor = [UIColor whiteColor];
+        self.numActiveInstances.textColor = [UIColor whiteColor];
+        self.numTotalInstancesLabel.textColor = [UIColor whiteColor];
+        self.greyBackgroundView.backgroundColor = kDarkBlueColor;
+    } else {
+        self.taskNameLabel.textColor = kDarkBlueColor;
+        self.averageInstanceTimeLabel.textColor = kDarkBlueColor;
+        self.dayLabel.textColor = kDarkBlueColor;
+        self.numActiveInstances.textColor = kDarkBlueColor;
+        self.numTotalInstancesLabel.textColor = kDarkBlueColor;
+        self.greyBackgroundView.backgroundColor = kLighterGreyColor;
+    }
 }
 
 @end
