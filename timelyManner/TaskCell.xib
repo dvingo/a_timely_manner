@@ -86,7 +86,7 @@
 											<object class="IBUILabel" id="1065402568">
 												<reference key="NSNextResponder" ref="335503258"/>
 												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{154, 2}, {120, 23}}</string>
+												<string key="NSFrame">{{150, 2}, {120, 23}}</string>
 												<reference key="NSSuperview" ref="335503258"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="707613778"/>
@@ -148,7 +148,7 @@
 											<object class="IBUILabel" id="707613778">
 												<reference key="NSNextResponder" ref="335503258"/>
 												<int key="NSvFlags">292</int>
-												<string key="NSFrame">{{269, 2}, {28, 23}}</string>
+												<string key="NSFrame">{{269, 4}, {28, 23}}</string>
 												<reference key="NSSuperview" ref="335503258"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="3259488"/>
@@ -327,6 +327,14 @@
 					</object>
 					<int key="connectionID">58</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">avgLabel</string>
+						<reference key="source" ref="1060145205"/>
+						<reference key="destination" ref="707613778"/>
+					</object>
+					<int key="connectionID">59</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -429,7 +437,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">58</int>
+			<int key="maxID">59</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -438,6 +446,7 @@
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="averageInstanceTimeLabel">UILabel</string>
+						<string key="avgLabel">UILabel</string>
 						<string key="dayLabel">UILabel</string>
 						<string key="greyBackgroundView">UIView</string>
 						<string key="numActiveInstances">UILabel</string>
@@ -447,6 +456,10 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="averageInstanceTimeLabel">
 							<string key="name">averageInstanceTimeLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="avgLabel">
+							<string key="name">avgLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="dayLabel">

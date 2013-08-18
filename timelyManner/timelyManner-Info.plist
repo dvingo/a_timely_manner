@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Quicksand-Bold.otf</string>
+		<string>Quicksand-BoldItalic.otf</string>
+		<string>Quicksand-Light.otf</string>
+		<string>Quicksand-Regular.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -17,8 +24,6 @@
 				<string>app-icon.png</string>
 				<string>app-icon-blue@2x.png</string>
 			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -39,8 +44,6 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
-	<key>UIPrerenderedIcon</key>
-	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

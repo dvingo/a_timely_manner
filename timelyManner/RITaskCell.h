@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *averageInstanceTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numTotalInstancesLabel;
 @property (weak, nonatomic) IBOutlet UIView *greyBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *avgLabel;
 
 - (void)populateViewsWithTask:(Task *)task;
 

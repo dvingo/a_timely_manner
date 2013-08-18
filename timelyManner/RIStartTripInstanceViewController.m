@@ -31,7 +31,6 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     self.locationManager.distanceFilter = 500;
-    
     self.taskNameLabel.text = self.task.name;
 }
 

@@ -47,7 +47,7 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"Tasks";
     titleLabel.textColor = kDarkBlueColor;
-    titleLabel.font = [UIFont systemFontOfSize:24.0];
+    titleLabel.font = [UIFont fontWithName:kRIFontRegular size:24.0];
     self.navigationItem.titleView = titleLabel;
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40.0, 30.0)];

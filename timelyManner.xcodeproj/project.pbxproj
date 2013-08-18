@@ -51,6 +51,10 @@
 		7BBB6666178B980500F22C03 /* RICreateTripTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */; };
 		7BDF45B617C14B75004FFAB3 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45B517C14B75004FFAB3 /* app-icon.png */; };
 		7BDF45B817C14B78004FFAB3 /* app-icon-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45B717C14B78004FFAB3 /* app-icon-blue@2x.png */; };
+		7BDF45BE17C14CA1004FFAB3 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45BA17C14CA1004FFAB3 /* Quicksand-Bold.otf */; };
+		7BDF45BF17C14CA1004FFAB3 /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45BB17C14CA1004FFAB3 /* Quicksand-BoldItalic.otf */; };
+		7BDF45C017C14CA1004FFAB3 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45BC17C14CA1004FFAB3 /* Quicksand-Light.otf */; };
+		7BDF45C117C14CA1004FFAB3 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45BD17C14CA1004FFAB3 /* Quicksand-Regular.otf */; };
 		7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3A45517A94ACC008006A8 /* RILocationManager.m */; };
 		7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */; };
 		7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */; };
@@ -136,6 +140,11 @@
 		7BBB6665178B980500F22C03 /* RICreateTripTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RICreateTripTaskViewController.m; sourceTree = "<group>"; };
 		7BDF45B517C14B75004FFAB3 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
 		7BDF45B717C14B78004FFAB3 /* app-icon-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon-blue@2x.png"; sourceTree = "<group>"; };
+		7BDF45BA17C14CA1004FFAB3 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
+		7BDF45BB17C14CA1004FFAB3 /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
+		7BDF45BC17C14CA1004FFAB3 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
+		7BDF45BD17C14CA1004FFAB3 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
+		7BDF45C417C14E90004FFAB3 /* RIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIConstants.h; sourceTree = "<group>"; };
 		7BE3A45417A94ACC008006A8 /* RILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RILocationManager.h; sourceTree = "<group>"; };
 		7BE3A45517A94ACC008006A8 /* RILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RILocationManager.m; sourceTree = "<group>"; };
 		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -241,6 +250,7 @@
 		7B22BC11177F2EE200AB36E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BDF45B917C14C90004FFAB3 /* Fonts */,
 				7B0DDFD617C144F800E0A0F3 /* Images */,
 				7B22BC12177F2EE200AB36E4 /* timelyManner-Info.plist */,
 				7B22BC13177F2EE200AB36E4 /* InfoPlist.strings */,
@@ -381,6 +391,7 @@
 				7BA85A3517961C8B00091845 /* RITimeHelper.m */,
 				7BE3A45417A94ACC008006A8 /* RILocationManager.h */,
 				7BE3A45517A94ACC008006A8 /* RILocationManager.m */,
+				7BDF45C417C14E90004FFAB3 /* RIConstants.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -407,6 +418,17 @@
 				7BBB6655178B874800F22C03 /* RICreateTaskViewController.m */,
 			);
 			name = NewTasks;
+			sourceTree = "<group>";
+		};
+		7BDF45B917C14C90004FFAB3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7BDF45BA17C14CA1004FFAB3 /* Quicksand-Bold.otf */,
+				7BDF45BB17C14CA1004FFAB3 /* Quicksand-BoldItalic.otf */,
+				7BDF45BC17C14CA1004FFAB3 /* Quicksand-Light.otf */,
+				7BDF45BD17C14CA1004FFAB3 /* Quicksand-Regular.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		7BFD430917A4690700C5A79E /* TripCell */ = {
@@ -506,6 +528,10 @@
 				7B0DDFDE17C1455100E0A0F3 /* task-list@2x.png in Resources */,
 				7BDF45B617C14B75004FFAB3 /* app-icon.png in Resources */,
 				7BDF45B817C14B78004FFAB3 /* app-icon-blue@2x.png in Resources */,
+				7BDF45BE17C14CA1004FFAB3 /* Quicksand-Bold.otf in Resources */,
+				7BDF45BF17C14CA1004FFAB3 /* Quicksand-BoldItalic.otf in Resources */,
+				7BDF45C017C14CA1004FFAB3 /* Quicksand-Light.otf in Resources */,
+				7BDF45C117C14CA1004FFAB3 /* Quicksand-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
