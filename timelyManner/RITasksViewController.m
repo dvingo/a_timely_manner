@@ -13,6 +13,7 @@
 #import "RITaskDetailViewController.h"
 #import "RITripDetailViewController.h"
 #import "RITaskCell.h"
+#import "RIViewsHelper.h"
 #import "Task.h"
 #import "RITaskManager.h"
 #import "RIConstants.h"
@@ -43,18 +44,9 @@
 }
 
 - (void)setupNavBar {
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120.0, 44.0)];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"Tasks";
-    titleLabel.textColor = kDarkBlueColor;
-    titleLabel.font = [UIFont fontWithName:kRIFontRegular size:24.0];
-    self.navigationItem.titleView = titleLabel;
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40.0, 30.0)];
-    [button setBackgroundImage:[UIImage imageNamed:@"plus-sign-light"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(createNewTaskPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = plusButton;
+    self.navigationItem.titleView = [[RIViewsHelper sharedInstance] titleLabelWithText:@"Tasks"];
+    self.navigationItem.rightBarButtonItem = [[RIViewsHelper sharedInstance] makeAddButtonWithTarget:self
+                                              action:@selector(createNewTaskPressed:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,6 +97,9 @@
     Task *selectedTask = (Task *)self.tasks[indexPath.row];
     RITaskDetailViewController *taskDetailViewController =
         [self.storyboard instantiateViewControllerWithIdentifier:ktaskDetailScene];
+    
+    taskDetailViewController.navigationItem.leftBarButtonItem = [[RIViewsHelper sharedInstance]
+                                                createBackButtonWithTarget:self action:@selector(back)];
     taskDetailViewController.task = selectedTask;
     [self.navigationController pushViewController:taskDetailViewController animated:YES];
 }
@@ -115,8 +110,14 @@
 
 #pragma mark - Create New Task Button
 
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)createNewTaskPressed:(id)sender {
     RICreateTaskViewController *createTaskViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"createTaskScene"];
+    createTaskViewController.navigationItem.leftBarButtonItem = [[RIViewsHelper sharedInstance]
+        createBackButtonWithTarget:self action:@selector(back)];
     [self.navigationController pushViewController:createTaskViewController animated:YES];
 }
 

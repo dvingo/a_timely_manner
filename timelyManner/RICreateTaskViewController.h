@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface RICreateTaskViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *stopWatchButton;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
+@property (weak, nonatomic) IBOutlet UIButton *tripButton;
 
 @end

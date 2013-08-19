@@ -12,6 +12,8 @@
 #import "RIStartTripInstanceViewController.h"
 #import "RIInstanceCell.h"
 #import "RITripCell.h"
+#import "RIViewsHelper.h"
+#import "RIConstants.h"
 
 @interface RITaskDetailViewController ()
 @property (strong, nonatomic) NSArray *instances;
@@ -28,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = kLightGreyColor;
     [self setupNavBar];
     [self setupTableView];
 }
@@ -51,14 +54,14 @@
 #pragma mark - Setup helpers
 
 - (void)setupNavBar {
-    self.navigationItem.title = self.task.name;
-    
-    // Create instance button
-    UIBarButtonItem *addInstanceButton = [[UIBarButtonItem alloc]
-                                          initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                          target:self
-                                          action:@selector(createNewInstanceButtonPressed)];
-    self.navigationItem.rightBarButtonItem = addInstanceButton;
+    self.navigationItem.titleView = [[RIViewsHelper sharedInstance] titleLabelWithText:self.task.name];
+    self.navigationItem.rightBarButtonItem = [[RIViewsHelper sharedInstance]
+                                                  makeAddButtonWithTarget:self
+                                                  action:@selector(createNewInstanceButtonPressed)];
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)createNewInstanceButtonPressed {
@@ -67,12 +70,16 @@
         RIStartTripInstanceViewController *startTripInstanceViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
         startTripInstanceViewController.task = self.task;
+        startTripInstanceViewController.navigationItem.leftBarButtonItem = [[RIViewsHelper sharedInstance]
+                                                                     createBackButtonWithTarget:self action:@selector(back)];
         [self.navigationController pushViewController:startTripInstanceViewController animated:YES];
     } else {
         NSLog(@"ABOUT TO START STOPWATCH INSTANCE");
         RIStartInstanceViewController *startInstanceViewController = [self.storyboard
                                                                       instantiateViewControllerWithIdentifier:kStartInstanceScene];
         startInstanceViewController.task = self.task;
+        startInstanceViewController.navigationItem.leftBarButtonItem = [[RIViewsHelper sharedInstance]
+                                                                            createBackButtonWithTarget:self action:@selector(back)];
         [self.navigationController pushViewController:startInstanceViewController animated:YES];
     }
 }

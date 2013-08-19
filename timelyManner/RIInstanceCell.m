@@ -7,6 +7,7 @@
 //
 
 #import "Instance.h"
+#import "RIConstants.h"
 #import "RIInstanceCell.h"
 #import "RITimeHelper.h"
 
@@ -16,10 +17,6 @@
 #define kTextColorTwo [UIColor colorWithRed:124.0/255.0f green:87.0/255.0f blue:237.0/255.0f alpha:1.0]
 
 @implementation RIInstanceCell
-@synthesize elapsedTimeLabel = _elapsedTimeLabel;
-@synthesize dateLabel = _dateLabel;
-@synthesize clockTimeLabel = _clockTimeLabel;
-@synthesize cellContainerView = _cellContainerView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,18 +28,14 @@
 }
 
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
-    UIColor *textColor;
-    if (numberIsEven(rowNumber)) {
-        NSLog(@"Cell row is even");
-        self.cellContainerView.backgroundColor = kCellColorOne;
-        textColor = kTextColorOne;
-    } else {
-        NSLog(@"Cell row is odd");
-        self.cellContainerView.backgroundColor = kCellColorTwo;
-        textColor = kTextColorTwo;
-    }
+    self.elapsedTimeLabel.font = [UIFont fontWithName:kRIFontBold size:36.0];
+    self.clockTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:14.0];
+    self.dateLabel.font = [UIFont fontWithName:kRIFontRegular size:17.0];
     
-    self.elapsedTimeLabel.textColor = textColor;
+    self.elapsedTimeLabel.textColor = kDarkBlueColor;
+    self.elapsedTimeLabel.textColor = kDarkBlueColor;
+    self.elapsedTimeLabel.textColor = kDarkBlueColor;
+
     
     if (instance.end) {
                     NSLog(@"instance has end date: %@", instance.end);

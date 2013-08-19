@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Rhombus Inc. All rights reserved.
 //
 
-#import "RIStartInstanceViewController.h"
 #import "RIActiveInstancesViewController.h"
-#import "RITaskManager.h"
 #import "RIConstants.h"
+#import "RIStartInstanceViewController.h"
+#import "RITaskManager.h"
+#import "RIViewsHelper.h"
 
 @implementation RIStartInstanceViewController
 @synthesize taskNameLabel;
@@ -21,12 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.taskNameLabel.text = [NSString stringWithFormat:@"\"%@\"", self.task.name];
-    UIImage *buttonImage = [[UIImage imageNamed:kOrangeButtonImage] resizableImageWithCapInsets:UIEdgeInsetsMake(6.0, 6.0, 6.0, 6.0)];
+    self.navigationItem.titleView = [[RIViewsHelper sharedInstance] titleLabelWithText:@"New Instance"];
+    self.startNewLabel.font = [UIFont fontWithName:kRIFontBold size:30.0];
+    self.instanceLabel.font = [UIFont fontWithName:kRIFontBold size:30.0];
+    self.goButton.titleLabel.font = [UIFont fontWithName:kRIFontBold size:60.0];
+    
+    self.taskNameLabel.text = [NSString stringWithFormat:@"%@", self.task.name];
+    UIImage *buttonImage = [[UIImage imageNamed:kOrangeButtonImage]
+                            resizableImageWithCapInsets:UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0)];
+    UIImage *selectedImage = [[UIImage imageNamed:kOrangeButtonHighlightedImage]
+                              resizableImageWithCapInsets:UIEdgeInsetsMake(3.0, 3.0, 3.0, 3.0)];
     self.goButton.backgroundColor = [UIColor clearColor];
     
     [self.goButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [self.goButton setBackgroundImage:buttonImage forState:UIControlStateSelected];
+    [self.goButton setBackgroundImage:selectedImage forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {

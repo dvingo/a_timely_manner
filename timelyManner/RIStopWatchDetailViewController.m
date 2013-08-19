@@ -12,6 +12,7 @@
 #import "RIInstanceCell.h"
 #import "RITaskManager.h"
 #import "RITimeHelper.h"
+#import "RIViewsHelper.h"
 
 @interface RIStopWatchDetailViewController ()
 @property (strong, nonatomic) NSArray *instances;
@@ -27,13 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *addInstanceButton = [[UIBarButtonItem alloc]
-                                          initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                               target:self
-                                                               action:@selector(createNewInstance)];
-    self.navigationItem.title = self.task.name;
-    self.navigationItem.rightBarButtonItem = addInstanceButton;
-    
+
+    self.navigationItem.titleView = [[RIViewsHelper sharedInstance] titleLabelWithText:self.task.name];
+    self.navigationItem.rightBarButtonItem = [[RIViewsHelper sharedInstance] makeAddButtonWithTarget:self
+                                                                                            action:@selector(createNewInstance)];
     [self setupTableView];
 }
 

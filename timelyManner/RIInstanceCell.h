@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define kInstanceCellIdentifier @"InstanceCell"
-#define kInstanceCellHeight 100.0f
+#define kInstanceCellHeight 80.0f
 
 @interface RIInstanceCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *elapsedTimeLabel;

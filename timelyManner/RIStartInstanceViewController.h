@@ -16,6 +16,8 @@
 @property (strong, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
+@property (weak, nonatomic) IBOutlet UILabel *startNewLabel;
+@property (weak, nonatomic) IBOutlet UILabel *instanceLabel;
 
 - (IBAction)goButtonPressed:(id)sender;
 
