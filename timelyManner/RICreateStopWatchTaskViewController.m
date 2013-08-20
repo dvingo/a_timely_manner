@@ -8,6 +8,7 @@
 
 #import "RICreateStopWatchTaskViewController.h"
 #import "RITaskManager.h"
+#import "RIConstants.h"
 #import "Task.h"
 
 @implementation RICreateStopWatchTaskViewController
@@ -20,9 +21,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.nameLabel becomeFirstResponder];
-    
-    self.navigationItem.title = @"New Stopwatch";
+    [self.nameField becomeFirstResponder];
+    self.nameField.frame = CGRectMake(self.nameField.frame.origin.x, self.nameField.frame.origin.y,
+                                      self.nameField.frame.size.width, self.nameField.frame.size.height + 10);
+    self.nameField.font = [UIFont fontWithName:kRIFontRegular size:24.0];
+    self.nameField.textColor = kDarkBlueColor;
+    self.nameLabel.font = [UIFont fontWithName:kRIFontBold size:30.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,8 +34,8 @@
 }
 
 - (IBAction)createButtonPressed:(id)sender {
-    if (self.nameLabel.text.length > 0) {
-        [[RITaskManager sharedInstance] saveTaskWithName:self.nameLabel.text taskType:kStopWatchTask];
+    if (self.nameField.text.length > 0) {
+        [[RITaskManager sharedInstance] saveTaskWithName:self.nameField.text taskType:kStopWatchTask];
         [self.navigationController popToRootViewControllerAnimated:YES];
     } else {
         // TODO display error label

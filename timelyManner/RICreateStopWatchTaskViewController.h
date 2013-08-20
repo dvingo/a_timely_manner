@@ -10,7 +10,8 @@
 
 @interface RICreateStopWatchTaskViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 
 - (IBAction)createButtonPressed:(id)sender;
 

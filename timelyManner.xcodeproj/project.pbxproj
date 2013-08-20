@@ -61,6 +61,7 @@
 		7BDF45CE17C1A4A5004FFAB3 /* orange-button-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45CC17C1A4A5004FFAB3 /* orange-button-dark@2x.png */; };
 		7BDF45CF17C1A4A5004FFAB3 /* orange-button-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45CD17C1A4A5004FFAB3 /* orange-button-white@2x.png */; };
 		7BDF45D117C1ADC9004FFAB3 /* orange-button-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BDF45D017C1ADC9004FFAB3 /* orange-button-grey@2x.png */; };
+		7BDF45E017C311BD004FFAB3 /* RIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDF45DF17C311BD004FFAB3 /* RIButton.m */; };
 		7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3A45517A94ACC008006A8 /* RILocationManager.m */; };
 		7BFD430017A41D6E00C5A79E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */; };
 		7BFD430317A4666F00C5A79E /* RITaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */; };
@@ -85,7 +86,7 @@
 		7B0DDFD917C1452100E0A0F3 /* plus-sign-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-sign-light@2x.png"; sourceTree = "<group>"; };
 		7B0DDFDB17C1452B00E0A0F3 /* orange-button-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-round@2x.png"; sourceTree = "<group>"; };
 		7B0DDFDD17C1455100E0A0F3 /* task-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "task-list@2x.png"; sourceTree = "<group>"; };
-		7B22BC05177F2EE200AB36E4 /* YourTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B22BC05177F2EE200AB36E4 /* YourTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = YourTime.app; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B22BC08177F2EE200AB36E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B22BC0A177F2EE200AB36E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7B22BC0C177F2EE200AB36E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +159,8 @@
 		7BDF45CC17C1A4A5004FFAB3 /* orange-button-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-dark@2x.png"; sourceTree = "<group>"; };
 		7BDF45CD17C1A4A5004FFAB3 /* orange-button-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-white@2x.png"; sourceTree = "<group>"; };
 		7BDF45D017C1ADC9004FFAB3 /* orange-button-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-grey@2x.png"; sourceTree = "<group>"; };
+		7BDF45DE17C311BD004FFAB3 /* RIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButton.h; sourceTree = "<group>"; };
+		7BDF45DF17C311BD004FFAB3 /* RIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButton.m; sourceTree = "<group>"; };
 		7BE3A45417A94ACC008006A8 /* RILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RILocationManager.h; sourceTree = "<group>"; };
 		7BE3A45517A94ACC008006A8 /* RILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RILocationManager.m; sourceTree = "<group>"; };
 		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -253,6 +256,7 @@
 		7B22BC10177F2EE200AB36E4 /* timelyManner */ = {
 			isa = PBXGroup;
 			children = (
+				7BDF45DD17C311AC004FFAB3 /* Views */,
 				7BA85A3317961C7800091845 /* Util */,
 				7B8640FA1780CE090009350C /* Models */,
 				7B351834177F323200E0FF72 /* Cells */,
@@ -451,6 +455,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		7BDF45DD17C311AC004FFAB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7BDF45DE17C311BD004FFAB3 /* RIButton.h */,
+				7BDF45DF17C311BD004FFAB3 /* RIButton.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		7BFD430917A4690700C5A79E /* TripCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +629,7 @@
 				7BFD430E17A4810200C5A79E /* RIStartTripInstanceViewController.m in Sources */,
 				7BE3A45617A94ACC008006A8 /* RILocationManager.m in Sources */,
 				7BDF45C717C18F44004FFAB3 /* RIViewsHelper.m in Sources */,
+				7BDF45E017C311BD004FFAB3 /* RIButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
