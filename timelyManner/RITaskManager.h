@@ -28,5 +28,6 @@
 - (NSString *)timeBetweenStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 - (NSString *)timeElapsedSinceDate:(NSDate *)startDate;
 //- (void)populateEndLocationWithInstance:(Instance *)instance;
+- (NSArray *)sortedTasksByCreatedAtDescending:(NSArray *)paramTasks;
 
 @end

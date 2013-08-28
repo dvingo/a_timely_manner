@@ -25,6 +25,7 @@ enum {
 @property (nonatomic, retain) NSNumber * taskType;
 @property (nonatomic, retain) NSSet *instances;
 @property (nonatomic, retain) NSArray *activeInstances;
+@property (nonatomic, retain) NSDate *createdAt;
 @end
 
 @interface Task (CoreDataGeneratedAccessors)

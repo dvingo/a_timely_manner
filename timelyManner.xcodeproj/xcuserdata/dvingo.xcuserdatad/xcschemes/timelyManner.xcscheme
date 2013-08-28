@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B22BC04177F2EE200AB36E4"
-               BuildableName = "timelyManner.app"
-               BlueprintName = "timelyManner"
+               BuildableName = "TaskTracker.app"
+               BlueprintName = "TaskTracker"
                ReferencedContainer = "container:timelyManner.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B22BC04177F2EE200AB36E4"
-            BuildableName = "timelyManner.app"
-            BlueprintName = "timelyManner"
+            BuildableName = "TaskTracker.app"
+            BlueprintName = "TaskTracker"
             ReferencedContainer = "container:timelyManner.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B22BC04177F2EE200AB36E4"
-            BuildableName = "timelyManner.app"
-            BlueprintName = "timelyManner"
+            BuildableName = "TaskTracker.app"
+            BlueprintName = "TaskTracker"
             ReferencedContainer = "container:timelyManner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7B22BC04177F2EE200AB36E4"
-            BuildableName = "timelyManner.app"
-            BlueprintName = "timelyManner"
+            BuildableName = "TaskTracker.app"
+            BlueprintName = "TaskTracker"
             ReferencedContainer = "container:timelyManner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

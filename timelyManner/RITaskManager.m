@@ -68,6 +68,52 @@
     return self.tasks;
 }
 
+- (NSArray *)sortedTasksByCreatedAtDescending:(NSArray *)paramTasks {
+    NSArray *returnArray = [paramTasks sortedArrayUsingComparator:^(id obj1, id obj2) {
+        Task *task1 = (Task *)obj1;
+        Task *task2 = (Task *)obj2;
+        if (task1.createdAt == nil) {
+            return NSOrderedDescending;
+        }
+        if (task2.createdAt == nil) {
+            return NSOrderedAscending;
+        }
+        
+        return [task2.createdAt compare:task1.createdAt];
+    }];
+    return returnArray;
+}
+
+- (NSDate *)lastRunDateWithTask:(Task *)task {
+    // Sort instances by end date
+    NSArray *tempInstances = [task.instances allObjects];
+    NSArray *sortedInstances = [tempInstances sortedArrayUsingComparator:^(id obj1, id obj2) {
+        Instance *instOne = (Instance *)obj1;
+        Instance *instTwo = (Instance *)obj2;
+        NSDate *firstEndDate = instOne.end;
+        NSDate *secondEndDate = instTwo.end;
+        if (firstEndDate == nil) {
+            // The second date is later in time than nil
+            return NSOrderedDescending;
+        }
+        if (secondEndDate == nil) {
+            // The first date is later in time than nil
+            return NSOrderedAscending;
+        }
+        return [firstEndDate compare:secondEndDate];
+    }];
+    NSDateFormatter *f = [NSDateFormatter new];
+    f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    Instance *first = (Instance *)[sortedInstances objectAtIndex:0];
+    Instance *last = (Instance *)[sortedInstances lastObject];
+    NSDate *firstEndDate = first.end;
+    NSDate *lastEndDate = last.end;
+    
+    NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
+    NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
+    return ((Instance *)[sortedInstances lastObject]).end;
+}
+
 - (NSArray *)loadActiveInstances {
     NSArray *allTasks = [self loadTasks];
     NSMutableArray *activeInstances = [NSMutableArray new];
@@ -90,6 +136,7 @@
     Task *newTask = (Task *)[NSEntityDescription insertNewObjectForEntityForName:kTaskName
                                                           inManagedObjectContext:context];
     newTask.name = paramName;
+    newTask.createdAt = [NSDate date];
     newTask.lastRun = nil;
     newTask.avgTime = nil;
     newTask.instances = nil;
@@ -131,36 +178,6 @@
     NSLog(@"instance created is: %@", newInstance);
     
     return newInstance;
-}
-
-- (NSDate *)lastRunDateWithTask:(Task *)task {
-    // Sort instances by end date
-    NSArray *tempInstances = [task.instances allObjects];
-    NSArray *sortedInstances = [tempInstances sortedArrayUsingComparator:^(id obj1, id obj2) {
-        Instance *instOne = (Instance *)obj1;
-        Instance *instTwo = (Instance *)obj2;
-        NSDate *firstEndDate = instOne.end;
-        NSDate *secondEndDate = instTwo.end;
-        if (firstEndDate == nil) {
-            // The second date is later in time than nil
-            return NSOrderedDescending;
-        }
-        if (secondEndDate == nil) {
-            // The first date is later in time than nil
-            return NSOrderedAscending;
-        }
-        return [firstEndDate compare:secondEndDate];
-    }];
-    NSDateFormatter *f = [NSDateFormatter new];
-    f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    Instance *first = (Instance *)[sortedInstances objectAtIndex:0];
-    Instance *last = (Instance *)[sortedInstances lastObject];
-    NSDate *firstEndDate = first.end;
-    NSDate *lastEndDate = last.end;
-    
-    NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
-    NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
-    return ((Instance *)[sortedInstances lastObject]).end;
 }
 
 - (Instance *)createInstanceWithTask:(Task *)paramTask

@@ -38,6 +38,7 @@
     
     self.tableView.frame = self.view.frame;
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
+    self.tasks = [[RITaskManager sharedInstance] sortedTasksByCreatedAtDescending:self.tasks];
 
     [self setupNavBar];
     [self setupTableView];
@@ -52,6 +53,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     // TODO Use notifications to only update when needed, not every appearance
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
+    self.tasks = [[RITaskManager sharedInstance] sortedTasksByCreatedAtDescending:self.tasks];
     [self.tableView reloadData];
 }
 
@@ -85,6 +87,8 @@
     
     if (self.tasks && self.tasks.count > 0) {
         NSLog(@"WE HAVE %d tasks", self.tasks.count);
+        Task *t = (Task *)[self.tasks objectAtIndex:indexPath.row];
+        NSLog(@"task created at: %@, %@", t.name, t.createdAt);
         [cell populateViewsWithTask:(Task *)[self.tasks objectAtIndex:indexPath.row]];
     }
     

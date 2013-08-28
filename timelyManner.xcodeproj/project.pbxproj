@@ -163,6 +163,7 @@
 		7BDF45DF17C311BD004FFAB3 /* RIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButton.m; sourceTree = "<group>"; };
 		7BE3A45417A94ACC008006A8 /* RILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RILocationManager.h; sourceTree = "<group>"; };
 		7BE3A45517A94ACC008006A8 /* RILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RILocationManager.m; sourceTree = "<group>"; };
+		7BE516AC17CD990200CC9583 /* timelyManner 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "timelyManner 3.xcdatamodel"; sourceTree = "<group>"; };
 		7BFD42FF17A41D6E00C5A79E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7BFD430117A4666E00C5A79E /* RITaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITaskDetailViewController.h; sourceTree = "<group>"; };
 		7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITaskDetailViewController.m; sourceTree = "<group>"; };
@@ -819,6 +820,7 @@
 		7B22BC22177F2EE200AB36E4 /* timelyManner.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7BE516AC17CD990200CC9583 /* timelyManner 3.xcdatamodel */,
 				7B22BC23177F2EE200AB36E4 /* timelyManner.xcdatamodel */,
 			);
 			currentVersion = 7B22BC23177F2EE200AB36E4 /* timelyManner.xcdatamodel */;

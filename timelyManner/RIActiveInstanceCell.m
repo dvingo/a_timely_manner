@@ -55,8 +55,11 @@
     NSLog(@"In populate views");
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.taskLabel.text = self.instance.task.name;
-    self.stopButton.alpha = 1.0f;
-    self.stopButton.enabled = YES;
+    if (self.instance.end == nil) {
+        self.stopButton.alpha = 1.0f;
+        self.stopButton.enabled = YES;
+    }
+
     self.timerLengthLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:self.instance.start];
 }
 

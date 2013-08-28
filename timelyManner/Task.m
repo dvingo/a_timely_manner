@@ -18,6 +18,7 @@
 @dynamic taskType;
 @dynamic instances;
 @dynamic activeInstances;
+@dynamic createdAt;
 
 - (BOOL)isTripTask {
     return [self.taskType intValue] == kTripTask;
