@@ -7,6 +7,7 @@
 //
 
 #import "RIActiveInstanceCell.h"
+#import "RIConstants.h"
 #import "RITaskManager.h"
 #import "RILocationManager.h"
 #import "Task.h"
@@ -54,13 +55,24 @@
 - (void)populateViews {
     NSLog(@"In populate views");
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     self.taskLabel.text = self.instance.task.name;
+    self.taskLabel.font = [UIFont fontWithName:kRIFontBold size:24.0];
+    self.taskLabel.textColor = kDarkBlueColor;
+    self.taskLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.taskLabel.numberOfLines = 0;
+    self.taskLabel.backgroundColor = [UIColor clearColor];
+
     if (self.instance.end == nil) {
         self.stopButton.alpha = 1.0f;
         self.stopButton.enabled = YES;
     }
 
     self.timerLengthLabel.text = [[RITaskManager sharedInstance] timeElapsedSinceDate:self.instance.start];
+    self.timerLengthLabel.font = [UIFont fontWithName:kRIFontBold size:30.0];
+    self.timerLengthLabel.textColor = kDarkBlueColor;
+    self.timerLengthLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.timerLengthLabel.numberOfLines = 0;
 }
 
 - (void)updateTimerLengthLabel {

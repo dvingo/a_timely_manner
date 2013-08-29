@@ -8,6 +8,7 @@
 
 #import "RIActiveInstancesViewController.h"
 #import "RIActiveInstanceCell.h"
+#import "RIConstants.h"
 #import "RITaskManager.h"
 
 #define kActiveInstanceCellIdentifier @"ActiveInstanceCell"
@@ -50,6 +51,8 @@
 }
 
 - (void)setupTableView {
+    self.view.backgroundColor = kLightGreyColor;
+    
     // Register Task Cell
     UINib *taskCellNib = [UINib nibWithNibName:kActiveInstanceCellIdentifier bundle:nil];
     [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kActiveInstanceCellIdentifier];
@@ -60,8 +63,15 @@
     [self.noDataView setUserInteractionEnabled:NO];
     self.noDataView.alpha = 0.0f;
 
-    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 100.0, 200.0, 40.0)];
-    emptyLabel.text = @"No active instances";
+    UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                    floorf(CGRectGetHeight(self.view.frame) * .20),
+                                                                    CGRectGetWidth(self.view.frame), 100.0)];
+    emptyLabel.text = NSLocalizedString(@"No active instances", @"No active instances");
+    emptyLabel.font = [UIFont fontWithName:kRIFontBold size:45.0];
+    emptyLabel.textColor = kDarkBlueColor;
+    emptyLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    emptyLabel.numberOfLines = 0;
+    emptyLabel.textAlignment = NSTextAlignmentCenter;
     [self.noDataView addSubview:emptyLabel];
     [self.view addSubview:self.noDataView];
 }
@@ -100,7 +110,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 110.0;
+    return 120.0;
 }
 
 #pragma mark - Table view delegate

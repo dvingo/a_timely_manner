@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  timelyManner
+
+  Created by Dan Vingo on 8/28/13.
+  Copyright (c) 2013 Rhombus Inc. All rights reserved.
+*/
+"No active instances" = "No active instances";
+"No Instances. Start one." = "No Instances. Start one.";

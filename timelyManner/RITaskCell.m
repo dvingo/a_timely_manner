@@ -47,17 +47,13 @@
     if (task.lastRun == nil) {
         [task updateLastRun];
     }
-    NSLog(@"in RITaskCell populateViewsWithTask lastRUN: %@", [f stringFromDate:task.lastRun]);
-    NSLog(@"TASK CELL dateFormatter: %@", self.dateFormatter);
-    NSLog(@"TASK CELL DAY LABEL: %@", [self.dateFormatter stringFromDate:task.lastRun]);
+
     double avgTime = [task averageInstanceTime];
-    NSLog(@"AVERAGE TASK INSTANCE TIME: %f", avgTime);
-    NSString *avgTimeString =[[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
-    NSLog(@"avg time: %@", avgTimeString);
+//    NSString *avgTimeString =[[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.averageInstanceTimeLabel.text = [[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.averageInstanceTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:20.0];
     self.dayLabel.text = [self.dateFormatter stringFromDate:task.lastRun];
-    self.dayLabel.font = [UIFont fontWithName:kRIFontRegular size:13.0];
+    self.dayLabel.font = [UIFont fontWithName:kRIFontBold size:14.0];
     self.numActiveInstances.text = [NSString stringWithFormat:@"%d active", task.activeInstances.count];
     self.numActiveInstances.font = [UIFont fontWithName:kRIFontRegular size:17.0];
     self.numTotalInstancesLabel.text = [NSString stringWithFormat:@"%d total", task.instances.count];

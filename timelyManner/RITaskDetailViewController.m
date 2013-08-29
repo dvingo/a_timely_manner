@@ -42,8 +42,16 @@
         return [i2.start compare:i1.start];
     }];
     if (self.instances.count == 0) {
-        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0, 100.0, 200.0, 40.0)];
-        emptyLabel.text = @"No Instances. Start one.";
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                        floorf(CGRectGetHeight(self.view.frame) * .20),
+                                                                        CGRectGetWidth(self.view.frame), 100.0)];
+        emptyLabel.text = NSLocalizedString(@"No Instances. Start one.", @"No Instances. Start one.");
+        emptyLabel.font = [UIFont fontWithName:kRIFontBold size:45.0];
+        emptyLabel.textColor = kDarkBlueColor;
+        emptyLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        emptyLabel.numberOfLines = 0;
+        emptyLabel.textAlignment = NSTextAlignmentCenter;
+        emptyLabel.backgroundColor = [UIColor clearColor];
         [self.view addSubview:emptyLabel];
     } else {
         // first see if we need to set it to alpha = 0
