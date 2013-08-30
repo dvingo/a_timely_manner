@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RICreateStopWatchTaskViewController : UIViewController
+@interface RICreateStopWatchTaskViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;

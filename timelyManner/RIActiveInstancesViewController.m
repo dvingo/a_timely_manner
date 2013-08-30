@@ -51,14 +51,16 @@
 }
 
 - (void)setupTableView {
-    self.view.backgroundColor = kLightGreyColor;
+    self.tableView.backgroundColor = kLightGreyColor;
     
     // Register Task Cell
     UINib *taskCellNib = [UINib nibWithNibName:kActiveInstanceCellIdentifier bundle:nil];
     [self.tableView registerNib:taskCellNib forCellReuseIdentifier:kActiveInstanceCellIdentifier];
     
     // Create empty data view
-    self.noDataView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                               CGRectGetWidth(self.view.frame),
+                                                               CGRectGetHeight(self.view.frame))];
     self.noDataView.backgroundColor = [UIColor whiteColor];
     [self.noDataView setUserInteractionEnabled:NO];
     self.noDataView.alpha = 0.0f;

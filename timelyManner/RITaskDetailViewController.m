@@ -72,11 +72,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Nav bar delegate
+
 - (void)createNewInstanceButtonPressed {
     if ([self.task isTripTask]) {
         NSLog(@"ABOUT TO START TRIP INSTANCE");
         RIStartTripInstanceViewController *startTripInstanceViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
+        
+        
         startTripInstanceViewController.task = self.task;
         startTripInstanceViewController.navigationItem.leftBarButtonItem = [[RIViewsHelper sharedInstance]
                                                                      createBackButtonWithTarget:self action:@selector(back)];

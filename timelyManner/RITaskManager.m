@@ -68,18 +68,35 @@
     return self.tasks;
 }
 
-- (NSArray *)sortedTasksByCreatedAtDescending:(NSArray *)paramTasks {
+- (NSArray *)sortedTasksByLastRunThenCreatedAtDescending:(NSArray *)paramTasks {
     NSArray *returnArray = [paramTasks sortedArrayUsingComparator:^(id obj1, id obj2) {
         Task *task1 = (Task *)obj1;
         Task *task2 = (Task *)obj2;
-        if (task1.createdAt == nil) {
+        if (task1.lastRun != nil && task2.lastRun != nil) {
+            return [task2.lastRun compare:task1.lastRun];
+        }
+        
+        if (task1.lastRun == nil && task2.lastRun != nil) {
             return NSOrderedDescending;
         }
-        if (task2.createdAt == nil) {
+        
+        if (task1.lastRun != nil && task2.lastRun == nil) {
             return NSOrderedAscending;
         }
         
-        return [task2.createdAt compare:task1.createdAt];
+        
+        if (task1.createdAt != nil && task2.createdAt != nil) {
+            return [task2.lastRun compare:task1.lastRun];
+        }
+        
+        if (task1.createdAt == nil && task2.createdAt != nil) {
+            return NSOrderedDescending;
+        }
+        
+        if (task1.createdAt != nil && task2.createdAt == nil) {
+            return NSOrderedAscending;
+        }
+        return NSOrderedSame;
     }];
     return returnArray;
 }

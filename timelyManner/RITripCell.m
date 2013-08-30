@@ -8,6 +8,7 @@
 
 #import "RITripCell.h"
 #import "RITimeHelper.h"
+#import "RIConstants.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -27,6 +28,13 @@
 }
 
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
+    self.elapsedTimeLabel.font = [UIFont fontWithName:kRIFontBold size:36.0];
+    self.elapsedTimeLabel.textColor = kDarkBlueColor;
+    self.clockTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:26.0];
+    self.clockTimeLabel.textColor = kDarkBlueColor;
+    self.dateLabel.font = [UIFont fontWithName:kRIFontRegular size:26.0];
+    self.dateLabel.textColor = kDarkBlueColor;
+    
     if (instance.end) {
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:instance.end

@@ -395,8 +395,8 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qUH-kD-mcj">
-                                <rect key="frame" x="90" y="314" width="141" height="130"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qUH-kD-mcj" customClass="RIButton">
+                                <rect key="frame" x="58" y="240" width="204" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <state key="normal" title="Go">
@@ -411,44 +411,48 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="About to" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5gN-qp-O6J">
-                                <rect key="frame" x="20" y="0.0" width="280" height="98"/>
+                                <rect key="frame" x="20" y="0.0" width="280" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="start" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BMd-x2-YBv">
-                                <rect key="frame" x="-50" y="62" width="280" height="98"/>
+                                <rect key="frame" x="20" y="52" width="157" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="new" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LVw-wi-NTl">
-                                <rect key="frame" x="132" y="62" width="186" height="98"/>
+                                <rect key="frame" x="132" y="52" width="186" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="timer" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Lt-Tb-WjH">
-                                <rect key="frame" x="67" y="223" width="186" height="98"/>
+                                <rect key="frame" x="67" y="178" width="186" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ozX-ll-fUB" userLabel="taskName - Label">
-                                <rect key="frame" x="20" y="137" width="280" height="98"/>
+                                <rect key="frame" x="20" y="115" width="280" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <color key="textColor" red="0.603484122983871" green="0.73361895161290325" blue="0.96078431369999995" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="labelAboutTo" destination="5gN-qp-O6J" id="Xnv-x9-oJ2"/>
+                        <outlet property="labelNew" destination="LVw-wi-NTl" id="Ne9-OP-HRp"/>
+                        <outlet property="labelStart" destination="BMd-x2-YBv" id="gAB-cY-j53"/>
+                        <outlet property="labelTimer" destination="3Lt-Tb-WjH" id="q6E-OB-gft"/>
                         <outlet property="taskNameLabel" destination="ozX-ll-fUB" id="8eR-C0-cgK"/>
                     </connections>
                 </viewController>
@@ -608,6 +612,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RIStartTripInstanceViewController.h"/>
             <relationships>
                 <relationship kind="action" name="goButtonPressed:"/>
+                <relationship kind="outlet" name="labelAboutTo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelNew" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelStart" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labelTimer" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="taskNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

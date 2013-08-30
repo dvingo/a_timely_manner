@@ -15,6 +15,10 @@
 @interface RIStartTripInstanceViewController : UIViewController <CLLocationManagerDelegate>
 @property (strong, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UILabel *taskNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labelAboutTo;
+@property (weak, nonatomic) IBOutlet UILabel *labelStart;
+@property (weak, nonatomic) IBOutlet UILabel *labelNew;
+@property (weak, nonatomic) IBOutlet UILabel *labelTimer;
 
 - (IBAction)goButtonPressed:(id)sender;
 

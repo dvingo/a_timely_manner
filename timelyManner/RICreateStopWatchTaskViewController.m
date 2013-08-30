@@ -11,6 +11,8 @@
 #import "RIConstants.h"
 #import "Task.h"
 
+#define kMaxNameLength 25
+
 @implementation RICreateStopWatchTaskViewController
 @synthesize nameLabel;
 
@@ -21,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.nameField.delegate = self;
     [self.nameField becomeFirstResponder];
     self.nameField.frame = CGRectMake(self.nameField.frame.origin.x, self.nameField.frame.origin.y,
                                       self.nameField.frame.size.width, self.nameField.frame.size.height + 10);
@@ -40,6 +43,18 @@
     } else {
         // TODO display error label
     }
+}
+
+- (BOOL)textField:(UITextField *)textField
+    shouldChangeCharactersInRange:(NSRange)range
+    replacementString:(NSString *)string {
+    NSLog(@"in shouldrelace");
+    if (self.nameField.text.length > kMaxNameLength) {
+        NSLog(@"in return no");
+        return NO;
+    }
+    NSLog(@"in return yes");
+    return YES;
 }
 
 @end

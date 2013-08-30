@@ -9,6 +9,7 @@
 #import "RIStartTripInstanceViewController.h"
 #import "RITaskManager.h"
 #import "RIConstants.h"
+#import "RIViewsHelper.h"
 
 @interface RIStartTripInstanceViewController ()
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -26,6 +27,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.titleView = [[RIViewsHelper sharedInstance] titleLabelWithText:@"New Trip Instance"];
+    
+    self.labelAboutTo.font = [UIFont fontWithName:kRIFontBold size:40.0];
+    self.labelAboutTo.textColor = kDarkBlueColor;
+    self.labelStart.font = [UIFont fontWithName:kRIFontBold size:40.0];
+    self.labelStart.textColor = kDarkBlueColor;
+    self.labelNew.font = [UIFont fontWithName:kRIFontBold size:40.0];
+    self.labelNew.textColor = kDarkBlueColor;
+    self.labelTimer.font = [UIFont fontWithName:kRIFontBold size:40.0];
+    self.labelTimer.textColor = kDarkBlueColor;
+    self.taskNameLabel.font = [UIFont fontWithName:kRIFontBold size:40.0];
     
     self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
