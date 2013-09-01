@@ -38,9 +38,7 @@
     // Create the task
     if (self.nameField.text.length > 0) {
         [[RITaskManager sharedInstance] saveTaskWithName:self.nameField.text taskType:kTripTask];
-        NSLog(@"after create instance");
         [self.navigationController popToRootViewControllerAnimated:YES];
-        NSLog(@"after pop to root");
     } else {
         // TODO display error label
     }
@@ -49,12 +47,9 @@
 - (BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string {
-    NSLog(@"in shouldrelace");
     if (self.nameField.text.length > kMaxNameLength) {
-        NSLog(@"in return no");
         return NO;
     }
-    NSLog(@"in return yes");
     return YES;
 }
 

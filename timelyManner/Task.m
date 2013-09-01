@@ -55,17 +55,13 @@
     }];
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    Instance *first = (Instance *)[sortedInstances objectAtIndex:0];
-    Instance *last = (Instance *)[sortedInstances lastObject];
-    NSDate *firstEndDate = first.end;
-    NSDate *lastEndDate = last.end;
-
-    NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
-    NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
     self.lastRun = (NSDate *)((Instance *)[sortedInstances objectAtIndex:0]).end;
 }
 
 - (NSInteger)averageInstanceTime {
+    if (self.instances.count == 0) {
+        return 0;
+    }
     double total = 0.0f;
     int numInstances = 0;
     for (Instance *instance in self.instances) {
@@ -74,7 +70,11 @@
             total += [instance elapsedTimeInSeconds];
         }
     }
-    return (int)(total / (float)numInstances);
+    if (numInstances == 0) {
+        return 0;
+    }
+    int returnVal = (int)(total / (float)numInstances);
+    return returnVal;
 }
 
 @end

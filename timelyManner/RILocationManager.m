@@ -55,12 +55,10 @@
 //    NSDate *eventDate = location.timestamp;
 //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
 //    if (abs(howRecent) < 15.0) {
-//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
 //              location.coordinate.latitude,
 //              location.coordinate.longitude);
 //    }
     for (Instance *instance in self.instances) {
-        NSLog(@"Setting end location for instance: %@", instance.task.name);
         instance.endLatitude = [NSNumber numberWithDouble:location.coordinate.latitude];
         instance.endLongitude = [NSNumber numberWithDouble:location.coordinate.longitude];
         [[RITaskManager sharedInstance] refreshTask:instance.task];

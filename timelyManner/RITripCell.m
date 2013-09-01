@@ -75,7 +75,6 @@
     MKMapRect r = MKMapRectNull;    
     for (NSUInteger i=0; i<2; ++i) {
         MKMapPoint p = MKMapPointForCoordinate(coordinateArray[i]);
-        NSLog(@"point x y: %f, %f", p.x, p.y);
         r = MKMapRectUnion(r, MKMapRectMake(p.x, p.y, 0, 0));
     }
     MKCoordinateRegion viewRegion = MKCoordinateRegionForMapRect(r);

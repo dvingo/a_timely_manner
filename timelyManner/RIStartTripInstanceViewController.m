@@ -48,9 +48,7 @@
 }
 
 - (IBAction)goButtonPressed:(id)sender {
-    NSLog(@"creating new instance");
     [self.locationManager startUpdatingLocation];
-    // show spinner
 }
 
 #pragma mark - LocationManager delegate
@@ -60,11 +58,9 @@
 //    NSDate *eventDate = location.timestamp;
 //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
 //    if (abs(howRecent) < 15.0) {
-//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
 //              location.coordinate.latitude,
 //              location.coordinate.longitude);
 //    }
-    NSLog(@"creating new TRIP instance");
     [[RITaskManager sharedInstance] createInstanceWithTask:self.task
                                              startLocation:location
                                                endLocation:nil];

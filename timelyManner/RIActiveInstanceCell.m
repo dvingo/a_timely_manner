@@ -41,7 +41,6 @@
     NSDate *lastRunDate = (NSDate *)[[RITaskManager sharedInstance] lastRunDateWithTask:self.instance.task];
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSLog(@"Last Run DATE: %@", [f stringFromDate:lastRunDate]);
     self.instance.task.lastRun = lastRunDate;
     
     [[RITaskManager sharedInstance] saveContext];
@@ -53,7 +52,6 @@
 }
 
 - (void)populateViews {
-    NSLog(@"In populate views");
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.taskLabel.text = self.instance.task.name;

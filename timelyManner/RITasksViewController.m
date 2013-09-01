@@ -50,7 +50,6 @@
     // TODO Use notifications to only update when needed, not every appearance
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
     self.tasks = [[RITaskManager sharedInstance] sortedTasksByLastRunThenCreatedAtDescending:self.tasks];
-    NSLog(@"after sorting tasks");
     [self.tableView reloadData];
 }
 

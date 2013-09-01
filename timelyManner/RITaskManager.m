@@ -121,13 +121,6 @@
     }];
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    Instance *first = (Instance *)[sortedInstances objectAtIndex:0];
-    Instance *last = (Instance *)[sortedInstances lastObject];
-    NSDate *firstEndDate = first.end;
-    NSDate *lastEndDate = last.end;
-    
-    NSLog(@"First elemnt of sorted instances end date: %@", [f stringFromDate:firstEndDate]);
-    NSLog(@"Last elemnt of sorted instances end date: %@", [f stringFromDate:lastEndDate]);
     return ((Instance *)[sortedInstances lastObject]).end;
 }
 
@@ -136,7 +129,6 @@
     NSMutableArray *activeInstances = [NSMutableArray new];
     for (Task *task in allTasks) {
         if (task.activeInstances.count > 0) {
-            NSLog(@"task with %d active: %@", task.activeInstances.count, task.name);
             [self refreshTask:task];
             [activeInstances addObjectsFromArray:task.activeInstances];
         }
@@ -166,7 +158,6 @@
     newTask.taskType = @(paramTaskType);
     NSError *error;
     [context save:&error];
-    NSLog(@"task created is: %@", newTask);
     return newTask;
 }
 
@@ -176,11 +167,8 @@
     Instance *newInstance = (Instance *)[NSEntityDescription insertNewObjectForEntityForName:kInstanceName
                                                                       inManagedObjectContext:context];
     [self refreshTask:paramTask];
-//    paramTask.lastRun = [self lastRunDateWithTask:paramTask];
-    NSDate *lastRunDate = (NSDate *)[self lastRunDateWithTask:paramTask];
     NSDateFormatter *f = [NSDateFormatter new];
     f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    NSLog(@"Last Run DATE: %@", [f stringFromDate:lastRunDate]);
     paramTask.lastRun = [self lastRunDateWithTask:paramTask];
     newInstance.createdAt = [NSDate date];
     newInstance.type = paramTask.taskType;
@@ -192,8 +180,6 @@
 
     NSError *error;
     [context save:&error];
-    NSLog(@"instance created is: %@", newInstance);
-    
     return newInstance;
 }
 
@@ -223,8 +209,6 @@
     
     NSError *error;
     [context save:&error];
-    NSLog(@"instance created is: %@", newInstance);
-    
     return newInstance;
 }
 

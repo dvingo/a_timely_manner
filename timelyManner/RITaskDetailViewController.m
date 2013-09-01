@@ -53,9 +53,6 @@
         emptyLabel.textAlignment = NSTextAlignmentCenter;
         emptyLabel.backgroundColor = [UIColor clearColor];
         [self.view addSubview:emptyLabel];
-    } else {
-        // first see if we need to set it to alpha = 0
-        NSLog(@"here");
     }
 }
 
@@ -76,7 +73,6 @@
 
 - (void)createNewInstanceButtonPressed {
     if ([self.task isTripTask]) {
-        NSLog(@"ABOUT TO START TRIP INSTANCE");
         RIStartTripInstanceViewController *startTripInstanceViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:kStartTripInstanceScene];
         
@@ -86,7 +82,6 @@
                                                                      createBackButtonWithTarget:self action:@selector(back)];
         [self.navigationController pushViewController:startTripInstanceViewController animated:YES];
     } else {
-        NSLog(@"ABOUT TO START STOPWATCH INSTANCE");
         RIStartInstanceViewController *startInstanceViewController = [self.storyboard
                                                                       instantiateViewControllerWithIdentifier:kStartInstanceScene];
         startInstanceViewController.task = self.task;
@@ -121,27 +116,17 @@
         // StopWatch cell
         if ([self.task isStopWatchTask]) {
             // Config StopWatchCell
-            NSLog(@"STOP WATCH CELL");
             RIInstanceCell *instanceCell = [tableView dequeueReusableCellWithIdentifier:kInstanceCellIdentifier forIndexPath:indexPath];
-
             [instanceCell populateCellWithInstance:instance rowNumber:indexPath.row];
-
-            NSLog(@"Elapsed time: %@", instanceCell.elapsedTimeLabel.text);
-            NSLog(@"date label: %@", instanceCell.dateLabel.text);
-            NSLog(@"clock time label: %@", instanceCell.clockTimeLabel.text);
-            NSLog(@"\n\n\n");
             return instanceCell;
 
         // Trip cell
         } else if ([self.task isTripTask]) {
-            NSLog(@"TRIP CELL");
             RITripCell *tripCell = [tableView dequeueReusableCellWithIdentifier:kTripInstanceCellIdentifier
                                                                forIndexPath:indexPath];
             [tripCell populateCellWithInstance:instance rowNumber:indexPath.row];
             NSDateFormatter *f = [NSDateFormatter new];
             f.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-            NSLog(@"TRIP CELL END DATE: %@", [f stringFromDate:instance.end]);
-            NSLog(@"END LOC: %@, %@", instance.endLatitude, instance.endLongitude);
             return tripCell;
         }
     }
@@ -149,14 +134,6 @@
 }
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.task.instances && self.task.instances.count > 0) {
-        Instance *instance = self.instances[indexPath.row];
-        NSLog(@"Got instance: %@", instance);
-        // Go to instance detail view
-    }
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.task isStopWatchTask]) {

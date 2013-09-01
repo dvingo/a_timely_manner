@@ -37,11 +37,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.activeInstances = [[RITaskManager sharedInstance] loadActiveInstances];
     if (self.activeInstances.count == 0) {
-        NSLog(@"There are no active instances");
         self.noDataView.alpha = 1.0f;
         [self.tableView setUserInteractionEnabled:NO];
     } else {
-        NSLog(@"There are %d active instances", self.activeInstances.count);
         self.noDataView.alpha = 0.0f;
         [self.tableView setUserInteractionEnabled:YES];
         [self setupTimer];
@@ -79,9 +77,7 @@
 }
 
 - (void)setupTimer {
-    NSLog(@"in setupTimer");
     if (self.countingTimer == nil) {
-        NSLog(@"Starting timer");
         self.countingTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(countingTimerDidFire:)

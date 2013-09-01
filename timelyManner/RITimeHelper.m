@@ -35,21 +35,16 @@
     switch (timeFormat) {
             
         case kHoursMinutesSeconds: {
-            NSLog(@"hours minutes format");
             if (hours > 0) {
-                NSLog(@"returning: %@",[NSString stringWithFormat:@"%dh %dm", hours, minutes]);
                 return [NSString stringWithFormat:@"%dh %dm", hours, minutes];
             } else if (minutes > 0) {
-                NSLog(@"returning: %@", [NSString stringWithFormat:@"%dm", minutes]);
                 return [NSString stringWithFormat:@"%dm", minutes];
             } else {
-                NSLog(@"returning: %@", [NSString stringWithFormat:@"%ds", seconds]);
                 return [NSString stringWithFormat:@"%ds", seconds];
             }
         }
         
         case kstartEndHours: {
-            NSLog(@"start end format");
             NSDateFormatter *formatter = [NSDateFormatter new];
             formatter.dateFormat = @"hh:mm";
             NSString *startTime = [formatter stringFromDate:startDate];
@@ -59,14 +54,12 @@
         }
             
         case kstopWatch: {
-            NSLog(@"stopwatch format");
             return [NSString stringWithFormat:@"%d:%d:%d", hours, minutes, seconds];
         }
             
         default:
             break;
     }
-    NSLog(@"returning nil");
     return nil;
 }
 
