@@ -9,9 +9,7 @@
 #import "RIAppDelegate.h"
 #import "RITasksViewController.h"
 #import "RICreateTaskViewController.h"
-#import "RIStopWatchDetailViewController.h"
 #import "RITaskDetailViewController.h"
-#import "RITripDetailViewController.h"
 #import "RITaskCell.h"
 #import "RIViewsHelper.h"
 #import "Task.h"
@@ -52,6 +50,7 @@
     // TODO Use notifications to only update when needed, not every appearance
     self.tasks = [[RITaskManager sharedInstance] loadTasks];
     self.tasks = [[RITaskManager sharedInstance] sortedTasksByLastRunThenCreatedAtDescending:self.tasks];
+    NSLog(@"after sorting tasks");
     [self.tableView reloadData];
 }
 
@@ -86,6 +85,7 @@
     if (self.tasks && self.tasks.count > 0) {
         [cell populateViewsWithTask:(Task *)[self.tasks objectAtIndex:indexPath.row]];
     }
+    
     
     return cell;
 }

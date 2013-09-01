@@ -47,9 +47,14 @@
     if (task.lastRun == nil) {
         [task updateLastRun];
     }
+    
+    if (task.activeInstances.count > 0) {
+        self.whiteBackgroundView.backgroundColor = kOrangeColor;
+    } else {
+        self.whiteBackgroundView.backgroundColor = [UIColor whiteColor];
+    }
 
     double avgTime = [task averageInstanceTime];
-//    NSString *avgTimeString =[[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.averageInstanceTimeLabel.text = [[RITimeHelper sharedInstance] timeFormatFromSeconds:(int)avgTime];
     self.averageInstanceTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:20.0];
     self.dayLabel.text = [self.dateFormatter stringFromDate:task.lastRun];

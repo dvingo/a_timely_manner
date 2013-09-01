@@ -36,9 +36,6 @@
 		7B96717D17924572005D00E0 /* RIActiveInstanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96717C17924572005D00E0 /* RIActiveInstanceCell.m */; };
 		7B96717F179246CB005D00E0 /* ActiveInstanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B96717E179246CA005D00E0 /* ActiveInstanceCell.xib */; };
 		7B9671861794D075005D00E0 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9671851794D075005D00E0 /* Task.m */; };
-		7BA37E39178CE10D00CAED39 /* RIStopWatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E38178CE10D00CAED39 /* RIStopWatchDetailViewController.m */; };
-		7BA37E3C178CE11A00CAED39 /* RITimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E3B178CE11A00CAED39 /* RITimerDetailViewController.m */; };
-		7BA37E3F178CE12B00CAED39 /* RITripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA37E3E178CE12B00CAED39 /* RITripDetailViewController.m */; };
 		7BA85A2A1796163B00091845 /* RIStartInstanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA85A291796163B00091845 /* RIStartInstanceViewController.m */; };
 		7BA85A2F179619E100091845 /* RIInstanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA85A2E179619E100091845 /* RIInstanceCell.m */; };
 		7BA85A31179619F300091845 /* InstanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA85A30179619F300091845 /* InstanceCell.xib */; };
@@ -121,12 +118,6 @@
 		7B96717E179246CA005D00E0 /* ActiveInstanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveInstanceCell.xib; sourceTree = "<group>"; };
 		7B9671841794D075005D00E0 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		7B9671851794D075005D00E0 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		7BA37E37178CE10C00CAED39 /* RIStopWatchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIStopWatchDetailViewController.h; sourceTree = "<group>"; };
-		7BA37E38178CE10D00CAED39 /* RIStopWatchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIStopWatchDetailViewController.m; sourceTree = "<group>"; };
-		7BA37E3A178CE11A00CAED39 /* RITimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITimerDetailViewController.h; sourceTree = "<group>"; };
-		7BA37E3B178CE11A00CAED39 /* RITimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITimerDetailViewController.m; sourceTree = "<group>"; };
-		7BA37E3D178CE12B00CAED39 /* RITripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RITripDetailViewController.h; sourceTree = "<group>"; };
-		7BA37E3E178CE12B00CAED39 /* RITripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RITripDetailViewController.m; sourceTree = "<group>"; };
 		7BA85A281796163B00091845 /* RIStartInstanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIStartInstanceViewController.h; sourceTree = "<group>"; };
 		7BA85A291796163B00091845 /* RIStartInstanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIStartInstanceViewController.m; sourceTree = "<group>"; };
 		7BA85A2D179619E100091845 /* RIInstanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIInstanceCell.h; sourceTree = "<group>"; };
@@ -364,12 +355,6 @@
 		7BA37E36178CE0EA00CAED39 /* TaskDetailViews */ = {
 			isa = PBXGroup;
 			children = (
-				7BA37E37178CE10C00CAED39 /* RIStopWatchDetailViewController.h */,
-				7BA37E38178CE10D00CAED39 /* RIStopWatchDetailViewController.m */,
-				7BA37E3A178CE11A00CAED39 /* RITimerDetailViewController.h */,
-				7BA37E3B178CE11A00CAED39 /* RITimerDetailViewController.m */,
-				7BA37E3D178CE12B00CAED39 /* RITripDetailViewController.h */,
-				7BA37E3E178CE12B00CAED39 /* RITripDetailViewController.m */,
 				7BFD430117A4666E00C5A79E /* RITaskDetailViewController.h */,
 				7BFD430217A4666E00C5A79E /* RITaskDetailViewController.m */,
 			);
@@ -621,9 +606,6 @@
 				7BBB665F178B954B00F22C03 /* RIActiveInstancesViewController.m in Sources */,
 				7BBB6663178B97F100F22C03 /* RICreateTimerTaskViewController.m in Sources */,
 				7BBB6666178B980500F22C03 /* RICreateTripTaskViewController.m in Sources */,
-				7BA37E39178CE10D00CAED39 /* RIStopWatchDetailViewController.m in Sources */,
-				7BA37E3C178CE11A00CAED39 /* RITimerDetailViewController.m in Sources */,
-				7BA37E3F178CE12B00CAED39 /* RITripDetailViewController.m in Sources */,
 				7B96717D17924572005D00E0 /* RIActiveInstanceCell.m in Sources */,
 				7B9671861794D075005D00E0 /* Task.m in Sources */,
 				7BA85A2A1796163B00091845 /* RIStartInstanceViewController.m in Sources */,

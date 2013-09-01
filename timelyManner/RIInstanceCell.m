@@ -29,8 +29,10 @@
 
 - (void)populateCellWithInstance:(Instance *)instance rowNumber:(int)rowNumber {
     self.elapsedTimeLabel.font = [UIFont fontWithName:kRIFontBold size:36.0];
-    self.clockTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:14.0];
+    self.clockTimeLabel.font = [UIFont fontWithName:kRIFontRegular size:26.0];
+    self.clockTimeLabel.textColor = kDarkBlueColor;
     self.dateLabel.font = [UIFont fontWithName:kRIFontRegular size:17.0];
+    self.dateLabel.textColor = kDarkBlueColor;
     
     self.elapsedTimeLabel.textColor = kDarkBlueColor;
     self.elapsedTimeLabel.textColor = kDarkBlueColor;
@@ -38,29 +40,20 @@
 
     
     if (instance.end) {
-                    NSLog(@"instance has end date: %@", instance.end);
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:instance.end
                                                                               withFormat:kHoursMinutesSeconds];
-        NSLog(@"Elapsed time: %@", self.elapsedTimeLabel.text);
         
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:instance.end];
-        NSLog(@"date label: %@", self.dateLabel.text);
         self.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                endDate:instance.end
                                                                             withFormat:kstartEndHours];
-        NSLog(@"clock time label: %@", self.clockTimeLabel.text);
-        NSLog(@"\n\n\n");
     } else {
-                    NSLog(@"instance does not have end date: %@", instance.end);
-                    NSLog(@"instance start date: %@", instance.start);
         NSDate *now = [NSDate date];
         self.elapsedTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                  endDate:now
                                                                               withFormat:kHoursMinutesSeconds];
-
         self.dateLabel.text = [[RITimeHelper sharedInstance] dateStringFromDate:now];
-        
         self.clockTimeLabel.text = [[RITimeHelper sharedInstance] timeBetweenStartDate:instance.start
                                                                                endDate:now
                                                                             withFormat:kstartEndHours];

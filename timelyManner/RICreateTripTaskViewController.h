@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RICreateTripTaskViewController : UIViewController
+@interface RICreateTripTaskViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UISwitch *currentLocationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *endLocationSwitch;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)createButtonWasPressed:(id)sender;
 
