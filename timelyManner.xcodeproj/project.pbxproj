@@ -84,7 +84,7 @@
 		7B0DDFD917C1452100E0A0F3 /* plus-sign-light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-sign-light@2x.png"; sourceTree = "<group>"; };
 		7B0DDFDB17C1452B00E0A0F3 /* orange-button-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-button-round@2x.png"; sourceTree = "<group>"; };
 		7B0DDFDD17C1455100E0A0F3 /* task-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "task-list@2x.png"; sourceTree = "<group>"; };
-		7B22BC05177F2EE200AB36E4 /* YourTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = YourTime.app; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B22BC05177F2EE200AB36E4 /* TaskTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B22BC08177F2EE200AB36E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B22BC0A177F2EE200AB36E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7B22BC0C177F2EE200AB36E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -227,7 +227,7 @@
 		7B22BC06177F2EE200AB36E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B22BC05177F2EE200AB36E4 /* YourTime.app */,
+				7B22BC05177F2EE200AB36E4 /* TaskTracker.app */,
 				7B22BC2A177F2EE200AB36E4 /* timelyMannerTests.octest */,
 			);
 			name = Products;
@@ -480,7 +480,7 @@
 			);
 			name = TaskTracker;
 			productName = timelyManner;
-			productReference = 7B22BC05177F2EE200AB36E4 /* YourTime.app */;
+			productReference = 7B22BC05177F2EE200AB36E4 /* TaskTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7B22BC29177F2EE200AB36E4 /* timelyMannerTests */ = {

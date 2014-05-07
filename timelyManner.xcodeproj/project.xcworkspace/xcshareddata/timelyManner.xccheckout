@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>370335CF-F6D7-4E8E-A690-5EFA703352A2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>timelyManner</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>36090093-112A-44FB-9333-869C3CC77B2E</key>
+		<string>https://github.com/Baltoli/a_timely_manner.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>timelyManner.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>36090093-112A-44FB-9333-869C3CC77B2E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Baltoli/a_timely_manner.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>36090093-112A-44FB-9333-869C3CC77B2E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>36090093-112A-44FB-9333-869C3CC77B2E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>a_timely_manner</string>
+		</dict>
+	</array>
+</dict>
+</plist>

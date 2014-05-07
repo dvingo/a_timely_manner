@@ -15,10 +15,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UIImage *nilImage = [[UIImage alloc] init];
-    [[UINavigationBar appearance] setTintColor:[UIColor clearColor]];
-    [[UINavigationBar appearance] setBackgroundImage:nilImage forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
     return YES;
 }
 
