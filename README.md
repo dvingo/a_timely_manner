@@ -1,4 +1,4 @@
-This was is a side project built for iOS 6. It is most likely out of date regarding changes needed to run for 7.
+This was is a side project built for iOS 6. It is most likely out of date regarding changes needed to run for more recent versions of iOS.
 
 My developer account expired and the app was removed from the store.
 
